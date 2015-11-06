@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About
+title: Home
 ---
 
 <img id="profile-picture" src="/resources/img/profile-picture.jpg" />
