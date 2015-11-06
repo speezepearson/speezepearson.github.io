@@ -1,7 +1,6 @@
 ---
 layout: default
 title: About
-permalink: /about/
 ---
 
 <img id="profile-picture" src="/resources/img/profile-picture.jpg" />
