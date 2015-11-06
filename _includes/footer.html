@@ -7,29 +7,34 @@
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>
+            {% include icon-website.html %}
+          </li>
+
+          <li>
+            {% include icon-email.html %}
+          </li>
+
+          <li>
+            {% include icon-github.html username=site.github_username %}
+          </li>
+
+          <li>
+            {% include icon-person.html label="PLSE lab (CSE 407)" %}
+          </li>
         </ul>
       </div>
 
       <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
+        <p>
+          I made this site with <a href="http://jekyllrb.com">Jekyll</a>.
+          Source code lives <a href="https://github.com/speezepearson/speezepearson.github.io">here</a> if you care.
+        </p>
+
+        <p>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></p>
       </div>
     </div>
 
