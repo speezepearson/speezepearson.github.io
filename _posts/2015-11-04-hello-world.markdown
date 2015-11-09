@@ -7,7 +7,7 @@ date:   2015-11-04 20:16:34 -0800
 I have a site! It supports:
 
 - `inline code`
-- \\( \int^{inline}_{math} \\)
+- $ \int^{inline}_{math} $
 - blocks of code
 
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,4 +18,4 @@ I have a site! It supports:
 
 - blocks of math:
 
-  \\[ \int^{blocks}_{math.} of \\]
+  $$ \int^{blocks}_{math.} of $$
