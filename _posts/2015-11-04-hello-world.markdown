@@ -7,7 +7,7 @@ date:   2015-11-04 20:16:34 -0800
 I have a site! It supports:
 
 - `inline code`
-- $ \int^{inline}_{math} $
+- inline math: $ P(x\|y) \propto P(x) P(y\|x) $
 - blocks of code
 
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,4 +18,4 @@ I have a site! It supports:
 
 - blocks of math:
 
-  $$ \int^{blocks}_{math.} of $$
+  $$ P(x|y) = P(x) \frac{P(y|x)}{P(y)} $$
