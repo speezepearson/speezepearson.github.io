@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Post Zero"
+date:   2015-12-23 18:18:44 -0800
+---
+
+Well, bad blog posts are better than no blog posts!
+
+With that as my call to arms, I started using [Beeminder][beeminder] to encourage me to write some. Beeminder is a service with a delightfully straightforward business model: you set goals, you report progress to Beeminder, and if you achieve your goals, the service is free!
+
+If you don't, they take your money.
+
+I love the ideas the Internet comes up with.
+
+I discovered Beeminder through [Star Slate Codex][ssc], my new favorite blog. It says good things about my tribe, and bad things about the other tribes, which is great, and obviously the author is wildly insightful.
+
+
+
+
+[beeminder]: https://www.beeminder.com/
+[newcomb]: https://en.wikipedia.org/wiki/Newcomb%27s_paradox
+[ssc]: http://slatestarcodex.com/
