@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html id="__html__">
+<head id="_element_89">
+  <title id="_element_90">browsergui tour</title>
+</head>
+
+<body id="_element_91">
+  <p>This is a mock-up of something you can make in Browsergui. This page is not made with Browsergui: Browsergui does not compile to JavaScript. But everything here functions pretty much the same as it would if you were running a GUI with Browsergui.</p>
+
+  <p id="_element_1">Here is a list of all the kinds of Element available to you. See the
+  classes' documentation for more detailed information on them.</p>
+
+  <ol id="_element_87" style="list-style-type: disc">
+    <li>
+      <div id="_element_20">
+        <p id="_element_2">Text of many flavors:</p>
+
+        <table id="_element_19" style="border-collapse: collapse; border-spacing: 0">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid black"><strong id=
+              "_element_3">Code</strong></td>
+
+              <td style="border: 1px solid black"><strong id=
+              "_element_4">Result</strong></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_6">
+Text("some plain text")
+</pre>
+              </td>
+
+              <td style="border: 1px solid black"><span id="_element_5">some plain
+              text</span></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_10">
+Container(Paragraph("one"), Paragraph("two"))
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_9">
+                  <p id="_element_7">one</p>
+
+                  <p id="_element_8">two</p>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_12">
+EmphasizedText("some bold text")
+</pre>
+              </td>
+
+              <td style="border: 1px solid black"><strong id="_element_11">some bold
+              text</strong></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_14">
+CodeSnippet("some code")
+</pre>
+              </td>
+
+              <td style="border: 1px solid black"><code id="_element_13" style=
+              "white-space: pre">some code</code></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_16">
+CodeBlock("one\ntwo")
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <pre id="_element_15">
+one
+two
+</pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_18">
+Link("google", url="http://google.com")
+</pre>
+              </td>
+
+              <td style="border: 1px solid black"><a href="http://google.com" id=
+              "_element_17" target="_blank" name="_element_17">google</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+
+    <li>
+      <div id="_element_57">
+        <p id="_element_21">Input of many flavors:</p>
+
+        <table id="_element_56" style="border-collapse: collapse; border-spacing: 0">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid black"><strong id=
+              "_element_22">Code</strong></td>
+
+              <td style="border: 1px solid black"><strong id=
+              "_element_23">Result</strong></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_27">
+click_count = Text('0')
+def button_clicked():
+  n = int(click_count.text)
+  click_count.text = str(n+1)
+button = Button('Click me!', callback=button_clicked)
+
+Container(click_count, button)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_26">
+                  <span id="_element_24">0</span><button id="_element_25" onclick=
+                  "var counter = document.getElementById('_element_24'); counter.innerHTML=parseInt(counter.innerHTML)+1">Click me!</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_31">
+slider_value_squared = Text('')
+def slider_changed():
+  if slider.value is None:
+    slider_value_squared.text = ''
+  else:
+    slider_value_squared.text = '{:.3g}'.format(slider.value ** 2)
+slider = FloatSlider(min=0, max=10, change_callback=slider_changed)
+slider.value = 3
+
+Container(slider, slider_value_squared)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_30">
+                  <input id="_element_29" max="10.0" min="0.0" oninput=
+                  "document.getElementById('_element_28').innerHTML=this.value*this.value"
+                  step="0.01" type="range" value="3.0" /><span id="_element_28">9</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_35">
+reversed_text_field_contents = Text('')
+def text_field_changed():
+  reversed_contents = ''.join(reversed(text_field.value))
+  reversed_text_field_contents.text = reversed_contents
+text_field = TextField(change_callback=text_field_changed)
+text_field.value = "Reversed"
+
+Container(text_field, reversed_text_field_contents)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_34">
+                  <input id="_element_33" oninput=
+                  "document.getElementById('_element_32').innerHTML=this.value.split('').reverse().join('')"
+                  type="text" value="Reversed" /><span id="_element_32">desreveR</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_39">
+reversed_text_field_contents = Text('')
+def text_field_changed():
+  reversed_contents = ''.join(reversed(text_field.value))
+  reversed_text_field_contents.text = reversed_contents
+text_field = BigTextField(change_callback=text_field_changed)
+text_field.value = "Reversed"
+
+Container(text_field, reversed_text_field_contents)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_38">
+                  <textarea id="_element_37" oninput=
+                  "document.getElementById('_element_36').innerHTML=this.value.split('').reverse().join('')">
+Reversed
+</textarea><span id="_element_36">desreveR</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_43">
+selected_dropdown_item = Text('')
+dropdown = Dropdown(['Dr', 'op', 'do', 'wn'])
+@dropdown.def_change_callback
+def _():
+  selected_dropdown_item.text = dropdown.value
+dropdown.value = "wn"
+
+Container(dropdown, selected_dropdown_item)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_42">
+                  <select id="_element_41" onchange=
+                  "document.getElementById('_element_40').innerHTML=this.value">
+                  <option value="Dr">
+                      Dr
+                    </option>
+
+                    <option value="op">
+                      op
+                    </option>
+
+                    <option value="do">
+                      do
+                    </option>
+
+                    <option selected="true" value="wn">
+                      wn
+                    </option>
+                  </select><span id="_element_40">wn</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_47">
+number_field_squared = Text('')
+def number_changed():
+  if number_field.value is None:
+    number_field_squared.text = ''
+  else:
+    number_field_squared.text = str(number_field.value ** 2)
+number_field = NumberField(change_callback=number_changed)
+number_field.value = 12
+
+Container(number_field, number_field_squared)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_46">
+                  <input id="_element_45" oninput=
+                  "document.getElementById('_element_44').innerHTML=this.value*this.value"
+                  type="number" value="12" /><span id="_element_44">144.0</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_51">
+colored_text = Text('colored')
+def color_changed():
+  color = color_field.value
+  color_hex = '#{:02x}{:02x}{:02x}'.format(*color)
+  colored_text.css['color'] = color_hex
+color_field = ColorField(change_callback=color_changed)
+color_field.value = (0, 0, 255)
+
+Container(color_field, colored_text)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_50">
+                  <input id="_element_49" oninput=
+                  "document.getElementById('_element_48').setAttribute('style', 'color:'+this.value)"
+                  placeholder="#xxxxxx" type="color" value="#0000ff" /><span id=
+                  "_element_48" style="color: #0000ff">colored</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_55">
+weekday_text = Text('...')
+DAYS = ('Monday', 'Tuesday', 'Wednesday', 'Thursday',
+        'Friday', 'Saturday', 'Sunday')
+def date_changed():
+  if date_field.value is None:
+    weekday_text.text = ''
+  else:
+    weekday_text.text = DAYS[date_field.value.weekday()]
+date_field = DateField(change_callback=date_changed)
+
+Container(date_field, weekday_text)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_54">
+                  <input id="_element_53" oninput=
+                  "var n=(new Date(this.value)).getDay(); var dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][n]; document.getElementById('_element_52').innerHTML=dayName"
+                  placeholder="yyyy-mm-dd" type="date" value="" /><span id=
+                  "_element_52">...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+
+    <li>
+      <div id="_element_79">
+        <p id="_element_58">Structural elements of many flavors:</p>
+
+        <table id="_element_78" style="border-collapse: collapse; border-spacing: 0">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid black"><strong id=
+              "_element_59">Code</strong></td>
+
+              <td style="border: 1px solid black"><strong id=
+              "_element_60">Result</strong></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_64">
+Container(Text("one"), CodeSnippet("two"))
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_63">
+                  <span id="_element_61">one</span><code id="_element_62" style=
+                  "white-space: pre">two</code>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_67">
+Viewport(
+  CodeBlock('\n'.join(50*'viewport ' for _ in range(100))),
+  width=400, height=200)
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <div id="_element_66" style="height: 200px; overflow: scroll; width: 400px">
+                  <pre id="_element_65">
+<script type="text/javascript">
+  for (var row=0; row<50; ++row) {
+    for (var column=0; column<20; ++column) {
+      document.write('viewport ');
+    }
+    document.write('\n');
+  }
+</script>
+
+                  </pre>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_71">
+List(items=[Text("one"), Text("two")])
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <ol id="_element_70" style="list-style-type: disc">
+                  <li><span id="_element_68">one</span></li>
+
+                  <li><span id="_element_69">two</span></li>
+                </ol>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_77">
+Grid(cells=[
+  [Text("00"), Text("01")],
+  [Text("10"), Text("11")]])
+</pre>
+              </td>
+
+              <td style="border: 1px solid black">
+                <table id="_element_76" style=
+                "border-collapse: collapse; border-spacing: 0">
+                  <tbody>
+                    <tr>
+                      <td style="border: 1px solid black"><span id=
+                      "_element_72">00</span></td>
+
+                      <td style="border: 1px solid black"><span id=
+                      "_element_73">01</span></td>
+                    </tr>
+
+                    <tr>
+                      <td style="border: 1px solid black"><span id=
+                      "_element_74">10</span></td>
+
+                      <td style="border: 1px solid black"><span id=
+                      "_element_75">11</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+
+    <li>
+      <div id="_element_86">
+        <p id="_element_80">Other:</p>
+
+        <table id="_element_85" style="border-collapse: collapse; border-spacing: 0">
+          <tbody>
+            <tr>
+              <td style="border: 1px solid black"><strong id=
+              "_element_81">Code</strong></td>
+
+              <td style="border: 1px solid black"><strong id=
+              "_element_82">Result</strong></td>
+            </tr>
+
+            <tr>
+              <td style="border: 1px solid black">
+                <pre id="_element_84">
+Image(os.path.join(os.path.dirname(__file__), 'tour-image.png'))
+</pre>
+              </td>
+
+              <td style="border: 1px solid black"><img id="_element_83" src="http://static1.squarespace.com/static/50d6daa7e4b0c2f497595cdc/t/515fede3e4b0b72aa949fa15/1365241316065/transparent-dice.png" name="_element_83" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+  </ol>
+</body>
+</html>
