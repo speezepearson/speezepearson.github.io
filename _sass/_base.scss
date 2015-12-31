@@ -69,13 +69,17 @@ ul, ol {
     margin-left: $spacing-unit;
 }
 
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
+/**
+ * SRP: this was in Jekyll's default, but it makes my posts look funny
+ * on the main blog page, so I'm turning it off.
+ *
+  li {
+      > ul,
+      > ol {
+           margin-bottom: 0;
+      }
+  }
+ */
 
 
 /**
