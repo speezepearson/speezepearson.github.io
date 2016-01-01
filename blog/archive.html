@@ -1,0 +1,25 @@
+---
+layout: default
+title: Blog Archive
+---
+
+<div class="home">
+
+  <table class="archive-table">
+    <thead>
+      <th class="archive-table__title-header">Title</th>
+      <th class="archive-table__date-header">Date</th>
+      <th class="archive-table__excerpt-header">Summary</th>
+    </th>
+    <tbody>
+      {% for post in site.posts %}
+        <tr>
+          <td><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></td>
+          <td>{{ post.date | date: "%Y-%m-%d" }}</td>
+          <td>{{ post.summary }}</td>
+        </li>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>

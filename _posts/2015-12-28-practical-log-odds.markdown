@@ -3,6 +3,7 @@ layout: post
 title:  "Practical Log-Odds"
 date:   2015-12-29 12:00:00 -0800
 categories: statistics
+summary: "Introduces a neat way of thinking about probabilities ('log-odds'), suitable for mental ballparking."
 ---
 
 I assert that for everyday purposes, you should start thinking about probabilities in this wacko weird way called "log-odds," which (I claim) makes it easier for you to:

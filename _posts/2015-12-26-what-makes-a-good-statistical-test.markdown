@@ -3,6 +3,7 @@ layout: post
 title:  "What Makes a Good Statistical Test"
 date:   2015-12-26 12:00:00 -0800
 categories: statistics
+summary: "Describes what a statistical test 'really is,' and how to choose a good one."
 ---
 
 My statistics education (and yours too, probably) was largely of the form:
@@ -35,7 +36,7 @@ How does this fit into your existing knowledge base? Well, to illustrate, here a
 
 1. $ weirdness := \left\| nHeads - nFlips/2 \right\| $ is a good statistical test for distinguishing between the hypotheses "this coin is fair" and "this coin is biased," because it tends to produce larger numbers in worlds where the coin is biased.
 
-   Because this test is so simple, so often useful, and so good at its job, people have made big tables where you can look up the p-value for any given $nHeads$ and $nFlips$. But you could trivially do that yourself!
+   Because this test is so simple, so often useful, and so good at its job, people have made big tables where you can look up the p-value for any given $nHeads$ and $nFlips$. But you could do that yourself!
 
 2. $ weirdness := nToggles/nFlips $, where $nToggles$ is the number of flips that are different from their predecessors, is good for distinguishing between the hypotheses "this coin is fair" and "this coin has some weird hidden state that makes it 'anti-sticky,' i.e. each flip wants to be different than its predecessor, i.e. I kinda expect to see $HTHTHTHT$ a lot."
 
@@ -50,3 +51,6 @@ Takeaways
 - Every statistical test is designed specifically to distinguish between two particular hypotheses.
 - The only metric of a test's quality is how well it distinguishes those hypotheses.
 - Every statistical test (that I'm aware of) boils down to a single "weirdness function" that generally produces small numbers when the null hypothesis is true, and big numbers when the alternative hypothesis is true.
+
+
+Edit: this post is concerned only with *choosing* a statistical test, not *using* one to compute a P-value. If you're using a nonstandard test, you can't just look up your weirdness in a table, so have to roll up your sleeves and do math. The math can be very hard. I'll consider covering that in another post.

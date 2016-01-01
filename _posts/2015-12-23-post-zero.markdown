@@ -2,6 +2,7 @@
 layout: post
 title:  "Post Zero"
 date:   2015-12-23 18:18:44 -0800
+summary: "yammer yammer yammer yammer"
 ---
 
 Well, bad blog posts are better than no blog posts!
