@@ -5,6 +5,13 @@ title: Blog
 
 <div class="home">
 
+  <div class="blog-header">
+    <ul class="blog-header__list">
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS feed</a></li>
+    </ul>
+  </div>
+
   <ul class="post-list">
     {% for post in site.posts %}
       <li class="post-list__item">
@@ -19,7 +26,5 @@ title: Blog
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
