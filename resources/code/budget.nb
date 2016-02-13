@@ -1,0 +1,211 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7189,        202]
+NotebookOptionsPosition[      6721,        183]
+NotebookOutlinePosition[      7059,        198]
+CellTagsIndexPosition[      7016,        195]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"csv", "=", 
+   RowBox[{"Import", "[", "\"\<~/.transactions.csv\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"columnNames", "=", 
+  RowBox[{
+  "csv", "\[LeftDoubleBracket]", "1", 
+   "\[RightDoubleBracket]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"transactions", "=", 
+   RowBox[{"Sort", "@", 
+    RowBox[{"csv", "\[LeftDoubleBracket]", 
+     RowBox[{"2", ";;"}], "\[RightDoubleBracket]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"transactions", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"DateObject", "[", 
+        RowBox[{"#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+        "]"}], "}"}], "~", "Join", "~", 
+      RowBox[{"#", "\[LeftDoubleBracket]", 
+       RowBox[{"2", ";;"}], "\[RightDoubleBracket]"}]}], "&"}], "/@", 
+    "transactions"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"transactions", "\[LeftDoubleBracket]", "1", 
+  "\[RightDoubleBracket]"}]}], "Input",
+ CellChangeTimes->{{3.6637152944253817`*^9, 3.6637153498673887`*^9}, {
+   3.6637158294466953`*^9, 3.663715880846987*^9}, {3.6637162234242773`*^9, 
+   3.663716247073958*^9}, 3.663717804500104*^9, {3.66371902858956*^9, 
+   3.663719033033996*^9}, {3.6637190833851337`*^9, 3.663719083775074*^9}, {
+   3.66372029280722*^9, 3.663720294576627*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"incomes", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"transactions", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+       "\[Equal]", "\"\<income\>\""}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expenditures", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"transactions", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+       "\[NotEqual]", "\"\<income\>\""}], "&"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.663719778296524*^9, 3.663719860767277*^9}, {
+  3.6637202333698606`*^9, 3.66372025581218*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"categorizedTransactions", "=", 
+   RowBox[{"GroupBy", "[", 
+    RowBox[{"transactions", ",", 
+     RowBox[{
+      RowBox[{"#", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+      "&"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.663716925057191*^9, 3.663716930227303*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dateLimit", ",", "recentTransactions"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"dateLimit", "=", 
+       RowBox[{"Today", "-", 
+        RowBox[{"Quantity", "[", 
+         RowBox[{"nWeeks", ",", "\"\<Weeks\>\""}], "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"recentTransactions", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Select", "[", 
+          RowBox[{"#", ",", 
+           RowBox[{
+            RowBox[{"dateLimit", "\[LessEqual]", 
+             RowBox[{
+             "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+             "\[LessEqual]", "Today"}], "&"}]}], "]"}], "&"}], "/@", 
+        "categorizedTransactions"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Column", "@", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"dateLimit", ",", "\[IndentingNewLine]", 
+         RowBox[{"PieChart", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Values", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Total", "[", 
+               RowBox[{"#", "\[LeftDoubleBracket]", 
+                RowBox[{";;", ",", "2"}], "\[RightDoubleBracket]"}], "]"}], 
+              "&"}], "/@", "recentTransactions"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"ChartLabels", "\[Rule]", 
+            RowBox[{"Keys", "[", "recentTransactions", "]"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], "}"}]}]}]}],
+     "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"nWeeks", ",", "20"}], "}"}], ",", "1", ",", "50"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.663717122954941*^9, 3.663717157152478*^9}, {
+  3.663717236941234*^9, 3.663717238140329*^9}, {3.663717605200941*^9, 
+  3.66371776556816*^9}, {3.663720456947112*^9, 3.663720512446602*^9}, {
+  3.664228636431631*^9, 3.664228641060977*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"cumulativeSpending", "[", "transactions_", "]"}], ":=", 
+  RowBox[{"MapThread", "[", "\[IndentingNewLine]", 
+   RowBox[{"List", ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"transactions", "\[LeftDoubleBracket]", 
+       RowBox[{";;", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Accumulate", "@", 
+       RowBox[{"transactions", "\[LeftDoubleBracket]", 
+        RowBox[{";;", ",", "2"}], "\[RightDoubleBracket]"}]}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"cumulativeSpending", "[", 
+  RowBox[{"categorizedTransactions", "[", "\"\<rent\>\"", "]"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6637195432140503`*^9, 3.66371958100278*^9}, {
+  3.663719618854986*^9, 3.663719650911496*^9}}],
+
+Cell[BoxData[
+ RowBox[{"DateListPlot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", "\[LeftDoubleBracket]", 
+     RowBox[{";;", ",", 
+      RowBox[{";;", "2"}]}], "\[RightDoubleBracket]"}], "&"}], "/@", 
+   RowBox[{"cumulativeSpending", "/@", "categorizedTransactions"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.663717848228569*^9, 3.6637179318228188`*^9}, {
+  3.6637195028381777`*^9, 3.6637195065158777`*^9}, {3.6637196580046062`*^9, 
+  3.6637196606912193`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"DateListLogPlot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", "\[LeftDoubleBracket]", 
+     RowBox[{";;", ",", 
+      RowBox[{";;", "2"}]}], "\[RightDoubleBracket]"}], "&"}], "/@", 
+   RowBox[{"cumulativeSpending", "/@", "categorizedTransactions"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.664213612180008*^9, 3.664213621972937*^9}}]
+},
+WindowSize->{828, 669},
+WindowMargins->{{Automatic, 213}, {-10, Automatic}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1347, 33, 121, "Input"],
+Cell[1908, 55, 712, 19, 55, "Input"],
+Cell[2623, 76, 325, 8, 32, "Input"],
+Cell[2951, 86, 2111, 51, 275, "Input"],
+Cell[5065, 139, 815, 18, 121, "Input"],
+Cell[5883, 159, 468, 11, 32, "Input"],
+Cell[6354, 172, 363, 9, 32, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
