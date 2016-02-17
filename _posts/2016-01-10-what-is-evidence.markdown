@@ -10,7 +10,7 @@ How do you choose what to believe? Or rather, how *should* you choose what to be
 
 This is the most important question in the world!
 
-For intensely abstract questions, about ethics or epistemology or math or the nature of the universe, the best strategy is sometimes "noodle it over," but for most questions -- how many people are coming to your book club, whether global warming is real, whether you left the oven on, what magnitude of the gravitational constant is -- you can't conjure the answer from first principles.
+For intensely abstract questions, about ethics or epistemology or math or the nature of the universe, the best strategy is sometimes "noodle it over," but for most questions -- how many people are coming to your book club, whether global warming is real, whether you left the oven on, what the magnitude of the gravitational constant is -- you can't conjure the answer from first principles.
 
 So what do you do instead?
 
