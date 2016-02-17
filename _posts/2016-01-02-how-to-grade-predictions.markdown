@@ -7,7 +7,7 @@ summary: "Describes how to tell how good a weatherman is."
 ---
 
 <i>
-  As usual with my statistics posts, I'm sure I'm describing something that's well-known and well studied. However, this time I actually discovered which words experts use to talk about the same thing: in this case, [self-information][wiki-self-information] and [scoring rule][wiki-scoring-rule].
+  As usual with my statistics posts, I'm sure I'm describing something that's well-known and well-studied. However, this time I actually discovered which words experts use to talk about the same thing: in this case, [self-information][wiki-self-information] and [scoring rule][wiki-scoring-rule].
 </i>
 
 <i>
@@ -26,13 +26,13 @@ It'd be great if we could take a list of prediction-probabilities (a weatherman'
 What are some features that "surprise" *must* have in order to make sense at all?
 
 - The best possible set of predictions ("100%" for days it rains, and "0%" for days it doesn't) should have the smallest possible surprise.
-- The worst possible set of predictions ("0%" for days it rains, "100%" for days it doesn't) should have the smallest possible surprise.
+- The worst possible set of predictions ("0%" for days it rains, "100%" for days it doesn't) should have the largest possible surprise.
 - All other sets of predictions should have surprises *strictly* between those two surprises.
 - Surprise should be "symmetric," in some sense: saying "70%" and seeing rain should be just as surprising as saying "30%" and seeing not-rain.
 
 What are some features we *want* "surprise" to have?
 
-- The surprise associated with multiple predictions should be the sums of the surprises of the individual predictions. I can't put my finger on *why* this seems like a nice feature, but... it does.
+- The surprise associated with multiple predictions should be the sum of the surprises of the individual predictions. I can't put my finger on *why* this seems like a nice feature, but... it does.
 
 How about this definition, for the surprise of a single prediction?
 

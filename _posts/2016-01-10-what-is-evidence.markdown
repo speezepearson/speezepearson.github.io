@@ -30,13 +30,13 @@ Some obvious examples, to help ground this idea:
 
 Some less-obvious examples, to show the usefulness of this concept:
 
-- When you want to know what the most persuasive arguments are for the Demublican position on gay abortion, you shouldn't ask that Repocrat-leaning site you like, "Why do Demublicans believe what they do about gay abortion?", because which arguments you find will not be correlated with which arguments are actually strong[^unless-you-trust-it]. (For the same reason, you also probably shouldn't ask that Demublican-slanted site that, according your Repocrat site and Repocrat friends, Demublicans generally like and respect.)
+- When you want to know what the most persuasive arguments are for the Demublican position on gay abortion, you shouldn't ask that Repocrat-leaning site you like, "Why do Demublicans believe what they do about gay abortion?", because which arguments you find will not be correlated with which arguments are actually strong[^unless-you-trust-it]. (For the same reason, you also probably shouldn't ask that Demublican-slanted site which, according your Repocrat site and Repocrat friends, Demublicans generally like and respect.)
 
 - When you want to know if your coworker is a communist spy, and you peek in her purse and see that there isn't a gun in there -- well, absence of evidence *is* evidence of absence: if gun-presence correlates with spyness, then gun-absence correlates with non-spyness. It may be weak evidence, but it is evidence.
 
 
 
-In addition, I claim this technique explains what's wrong with every logical fallacy. Ad hominem: whether your opponent is a pedophile doesn't correlate strongly with whether he's right about special relativity. (Although whether he flunked out of college *does*.) Appeal to authority: whether Neil deGrasse Tyson supports the Raiders doesn't correlate strongly with whether they'll win the playoffs. (Whether your sports-buff friend does *does*.) Appeal to emotion: whether a picture of a starving child makes you feel sad doesn't correlate strongly with how many starving children there are in the world. (It *does* correlate with whether starvation is "bad.") And so on.
+In addition, I claim this technique explains what's wrong with every logical fallacy. Ad hominem: whether your opponent is a pedophile doesn't correlate strongly with whether he's right about special relativity. (Although whether he flunked out of college *does*.) Appeal to authority: whether Neil deGrasse Tyson supports the Raiders doesn't correlate strongly with whether they'll win the playoffs. (Whether your sports-buff friend does *does*.) Appeal to emotion: whether a picture of a starving child makes you feel sad doesn't correlate strongly with how many starving children there are in the world. (It *might* correlate with whether starvation is "bad.") And so on.
 
 Anyway. I like abstract things that are so generally applicable that they're almost useless. Here is one.
 
