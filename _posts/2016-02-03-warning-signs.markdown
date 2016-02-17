@@ -10,7 +10,7 @@ This book had an immense effect on me. Its morals just feel *right*, and its les
 
 I've started attending a sort of book club. Every week, there's some assigned reading -- sometimes from the book, but usually from more recent writings that come out of the same intellectual tradition -- and then we get together to share our thoughts. I think there are lots of these book clubs scattered throughout the world, usually reading essays from a handful of prolific scholars who are highly-esteemed throughout this community.
 
-A lot of the people in my book club voluntarily give up 10% of their earnings, generally in ways recommended by said esteemed scholars. I don't, yet. There's not a *strong* pressure for everybody to pay this tithe, but I think there's a general feeling that it's a worthy act that makes you a better person.
+A lot of the people in my book club voluntarily give up 10% of their earnings, generally in ways recommended by said esteemed scholars. There's not a *strong* pressure for everybody to pay this tithe, but I think there's a general feeling that it's a worthy act that makes you a better person.
 
 Anyway, I really like this community and the people in it, and I'm going to try to get more involved despite all these <strong style="color:red">HUGE FLASHING WARNING SIGNS</strong>.
 
