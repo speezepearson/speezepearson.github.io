@@ -59,7 +59,7 @@ A natural question is: "Is it possible that rain truly is *literally unpredictab
 
 i.e. "Can we reject the hypothesis that this weatherman is as good as possible?"
 
-i.e. "If this weatherman is as good as possible, if he made these predictions, what fraction of the time would we expect the expected-surprise to be this high?"
+i.e. "If this weatherman is as good as possible, if he made these predictions, what fraction of the time would we expect the surprise to be this high?"
 
 I'm not sure if there's a clever way to answer this question -- but what we *can* do is, for any given predictions, generate a zillion outcome-sets *assuming that the weatherman is ideal*, and see how often those outcome-sets' surprises are larger than the observed ones.
 

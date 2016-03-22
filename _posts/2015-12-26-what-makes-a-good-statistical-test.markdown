@@ -53,4 +53,4 @@ Takeaways
 - Every statistical test (that I'm aware of) boils down to a single "weirdness function" that generally produces small numbers when the null hypothesis is true, and big numbers when the alternative hypothesis is true.
 
 
-Edit: this post is concerned only with *choosing* a statistical test, not *using* one to compute a P-value. If you're using a nonstandard test, you can't just look up your weirdness in a table, so have to roll up your sleeves and do math. The math can be very hard. I'll consider covering that in another post.
+Edit: this post is concerned only with *choosing* a statistical test, not *using* one to compute a p-value. If you're using a nonstandard test, you can't just look up your weirdness in a table, so you have to roll up your sleeves and do math. The math can be very hard. I'll consider covering that in another post.
