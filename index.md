@@ -7,7 +7,7 @@ title: Home
 
 I'm Spencer Pearson, a computer science Ph.D. student at U.Washington. Photo on the right.
 
-Everything on this page is up-to-date as of [November 6, 2015].
+Everything on this page is up-to-date as of [March 22, 2016].
 
 <div style="clear:both"></div>
 
@@ -36,6 +36,6 @@ Things I've Done
 Places I've Studied
 ===================
 
-Currently, I am a CS Ph.D. student at U.Washington.
+Currently, I am a CS Ph.D. student at U.Washington, working for [Michael Ernst](https://homes.cs.washington.edu/~mernst/).
 
 I did my undergrad at UC Santa Barbara, majoring in Physics and CS.
