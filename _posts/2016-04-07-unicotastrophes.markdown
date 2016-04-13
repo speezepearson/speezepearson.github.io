@@ -13,9 +13,9 @@ Unicode is a worldwide standard for mapping symbols (e.g. the letter "a", the Ch
 This tragedy would be compounded by the fact that the email could not continue
 
 > I work with your bank. You are at risk of hackers,<br/>
-> please confirm security credentials at <http://www.bankоfamerica.com>.
+> please confirm security credentials at <http://www.bаnk.com>.
 
-(This would be impossible because, for example, "o" belongs to the Latin character set, while "о" belongs to the Cyrillic character set.)
+(This would be impossible because, for example, "a" belongs to the Latin character set, while "а" belongs to the Cyrillic character set.)
 
 Let's look at some more of the beautiful possibilities of Unicode.
 
