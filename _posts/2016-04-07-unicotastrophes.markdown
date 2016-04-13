@@ -117,14 +117,14 @@ Miscellaneous
 
 Ruby requires that local variable names start with a lower-case letter.
 
-        2.1.5 :001 > 💩 = 1
+        2.1.5 :001 > 😃 = 1
          => 1
 
 And that class names begin with an upper-case letter.
 
-        2.1.5 :002 > class 💩; end
+        2.1.5 :002 > class 😃; end
         SyntaxError: (irb):2: class/module name must be CONSTANT
-        class 💩; end
+        class 😃; end
                    ^
 
 <br/>
