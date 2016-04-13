@@ -116,6 +116,7 @@ Miscellaneous
 -------------
 
 Ruby requires that local variable names start with a lower-case letter.
+
         2.1.5 :001 > 💩 = 1
          => 1
 
