@@ -33,6 +33,8 @@ As we've already seen, some things look like other things. Awesome!
 > Joshua Isaac<br/>
 > Homograph Bank security team
 
+(Notice where your browser directs you when you click/hover over that link -- it uses the Cyrillic о.)
+
 <br/>
 
 > hey, check out this google easter egg (had to log in)
