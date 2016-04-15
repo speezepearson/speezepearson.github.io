@@ -129,6 +129,8 @@ And that class names begin with an upper-case letter.
         class 😃; end
                    ^
 
+This case-convention makes it clear what kind of object "😃" refers to.
+
 <br/>
 <hr/>
 <br/>
