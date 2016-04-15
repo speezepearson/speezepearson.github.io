@@ -129,7 +129,7 @@ And that class names begin with an upper-case letter.
         class 😃; end
                    ^
 
-This case-convention makes it clear what kind of object "😃" refers to.
+This case-convention allows you to tell at a glance whether an object (e.g. 💩) is a variable or a class -- just by looking at the name!
 
 <br/>
 <hr/>
