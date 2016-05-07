@@ -2,6 +2,8 @@
 layout: post
 title:  "Money Records"
 date:   2016-02-12 12:00:00 -0800
+categories: projects
+summary: "Brief description of how I keep track of my expenditures."
 ---
 
 About two years ago, I started keeping really good records of all of my finances. Whenever I got money, or spent money, I recorded the transaction in this file, with an amount, a date, a note of how I paid (cash, credit/debit card), and fancy hierarchical tags -- really thorough records. It worked for a couple weeks until I stopped doing it, because taking thirty seconds to figure out the exact right set of tags for a transaction is just *really a pain*.

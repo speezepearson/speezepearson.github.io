@@ -2,6 +2,7 @@
 layout: post
 title:  "Fish"
 date:   2016-05-06 12:00:00 -0800
+categories: compsci
 ---
 
 At the risk of becoming enormously smug, I decided to try a new shell. It's called Fish (the Friendly Interactive Shell); it was developed in 2005, and its tagline is, "Finally, a command line shell for the '90s."

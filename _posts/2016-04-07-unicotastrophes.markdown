@@ -2,6 +2,7 @@
 layout: post
 title:  "Unicotastrophes"
 date:   2016-04-07 12:00:00 -0800
+categories: compsci
 ---
 
 Unicode is a worldwide standard for mapping symbols (e.g. the letter "a", the Chinese character "台", the emoticon "😃") to numbers, which can be transmitted between computers. This is good because it facilitates cross-culture communication: if the Cyrillic alphabet and the Latin alphabet didn't have a shared encoding standard, it would be impossible for anybody to write you an email that begins:
