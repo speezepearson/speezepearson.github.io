@@ -1,0 +1,59 @@
+---
+layout: post
+title:  "Fish"
+date:   2016-05-06 12:00:00 -0800
+---
+
+At the risk of becoming enormously smug, I decided to try a new shell. It's called Fish (the Friendly Interactive Shell); it was developed in 2005, and its tagline is, "Finally, a command line shell for the '90s."
+
+Fish has some cute features. The most obvious are fancy colors and autocompletion, and while those are nice, what has really enchanted me is... well, anybody can say "Let's make Bash more colorful," or "Let's fix this frustrating feature of Bash [and thereby introduce two more]," but Fish actually *fixes things while breaking fewer things* (as far as I can tell).
+
+Here are some things Fish does that I like:
+
+- **Simple variables.** My biggest complaint about Bash is its variables. They're strings, except the strings can expand to lists of strings, and there are also arrays, which you need if you want to represent a list of strings-that-might-contain-whitespace...
+
+  Anyway, in Fish all variables are lists of strings, and once you know that, everything works like you'd expect. Even if your filenames contain spaces!
+
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    $ set TARGETS a.jpg 'Old Photos/b.jpg'
+    $ rm $TARGETS
+
+    $ set COMMAND echo 1 2 3
+    $ echo "command is $COMMAND[1], args are $COMMAND[2..-1]"
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Less syntax.** Having lots of syntax makes a language complicated. Languages should not have special syntax for things that are just-as-clearly and just-as-concisely expressed using other language features (e.g. Python's `print` should never have been a keyword). Bash breaks this rule. For example:
+
+  - `foo && bar` could be, instead, `foo; and bar`. Fish's builtin function `and` will eval() its arguments iff the previous command exited with status 0. Similarly, `foo || bar` becomes `foo; or bar`.
+
+  - `VAR=value` becomes `set VAR value`.
+
+  - `{1..5}` becomes `(seq 1 5)`. Actually, Bash's syntax *damaged* my life by keeping me from learning about the `seq` command, thereby leaving me stranded when `{1..$N}` didn't do what I wanted.
+
+  - `$((1 + N))` becomes `(expr 1 + $N)`.
+
+  - `<(foo)` becomes `(foo | psub)`. I THINK THIS IS REALLY CUTE. `psub` just creates a named pipe somewhere on your filesystem, echoes the pipe's path, and cats stdin into the pipe. *Super* simple.
+
+  - Look at that last one again. Is that not just unbearably elegant?
+
+  - Okay, this is adding *more* syntax, but... I think it's good: `%...` expands job descriptions to PIDs, the same way `$...` expands variable names to values. In Bash, some builtins know that `%1` means "the first backgrounded job"; in Fish, `%1` just expands to that job's PID; but you can also do neat stuff like `set PID %self; head /proc/$PID/fdinfo/1`
+
+  - Lots of special variables are made less opaque: `$?` becomes `$status`, `$*` goes away forever like it should, `$@` becomes `$argv`, `$#` becomes `(count $argv)`, `$$` becomes `%self`, `$!` goes away (which is, perhaps, a loss), `$PS1` is replaced by a function (see below).
+
+- **Functions!** I think it's kinda dangerous to have multiple subtly-different ways of doing something. Bash has functions and aliases, which interact in weird ways:
+
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    $ alias my_alias='echo old value'
+    $ my_function() { my_alias; }
+    $ alias my_alias='echo new value'
+    $ my_function
+    old value
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Fish just has functions: no subtleties lurking there. (Yeah, it has a builtin called `alias`, but that's just syntactic sugar for a simple function definition.)
+
+  One function is named `fish_prompt`, which generates the prompt, taking the place of Bash's magical `$PS1` variable. So civilized!
+
+It's not all sunshine and rainbows, I admit: `eval $COMMAND` interprets `$COMMAND` as a string, all joined together by spaces. This is *more* surprising than in Bash, because in Bash you'd expect that kind of &#x1F4A9;, while you'd expect better from Fish.
+
+Anyway. That notwithstanding, I'm having a good time.
