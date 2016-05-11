@@ -88,7 +88,7 @@ Great, now we have a fancy theoretical description of a weird thought process. W
 
 Good question!
 
-(Okay, this information is filtered through a book and then through [a wiki post][in-practice-src], but I'll present it as fact. If it helps, I think the wiki post's author's epistemic virtue exceeds even my own.)
+(Okay, this information is filtered through a book and then through [a wiki post][in-practice-src], but I'll present it as fact. I trust the wiki post's author's epistemic virtue at least as much as the book's authors'.)
 
 A couple researchers did an experiment: run two batches of prisoner's dilemma experiments. One batch, the control group, they ran as normal. But for the other batch, they told the second prisoner what the first prisoner had decided.
 
