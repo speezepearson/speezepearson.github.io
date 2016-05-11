@@ -1,0 +1,117 @@
+---
+layout: post
+title:  "AMAC: Hyper-Meta-Level Game Theory"
+date:   2016-05-10 12:00:00 -0800
+categories: game-theory
+summary: "Actions Motivated by Acausal Correlations"
+---
+
+I. Prisoners, Dilemmas, Clones
+------------------------------
+
+So, you've got your classic [prisoner's dilemma][prisoners-dilemma]. If your counterpart cooperates, you're better off defecting; if your counterpart defects, you're better off defecting; so you should always defect. Your counterpart will reach the same conclusion, so you'll both defect, even though it would be better for each of you if you both cooperated. So goes the standard analysis.
+
+A twist: imagine you're playing the prisoner's dilemma against a clone of yourself. Like, God tells you,
+
+> Five seconds ago, I copy-pasted you into a room identical to this one,
+> and I'm having this exact same conversation with your clone,
+> and they're reacting exactly the same way you are.
+> I'm about to pit you against each other in the prisoner's dilemma.
+> Cooperate or defect?"
+
+Even if you don't care about the clone at all, even if you are the Platonic Form of Selfishness given flesh, I claim that you should *cooperate* here: whatever chain of reasoning you follow, you can be darned sure that the same thoughts are running through your clone's head. If you decide to cooperate, your clone will, almost magically, decide to cooperate too; if you defect, your clone will also defect. The only possible outcomes are cooperate-cooperate or defect-defect. Therefore, cooperate! Make sure you live in the good world!
+
+Something feels *very strange* about this kind of reasoning, which means we should be suspicious of it -- at least, until we put our finger on why our intuitions are screaming so loudly. Can we do that?
+
+I think we can!
+
+
+II. What's Wrong?
+-----------------
+
+You try to take actions that will make you happy. Let's formalize this a little bit: whenever you make a deliberate, well-reasoned decision to do X, you're implicitly saying
+
+> My expected future happiness, conditional on my doing X,
+> is greater than my expected future happiness conditional on my doing any alternative to X.
+
+Your future happiness is affected by two kinds of thing: stuff you *can* control (i.e. your actions), and stuff you *can't* control (i.e. everything else). You're used to calculating your expected happiness (conditional on your doing X) by: (a) assigning probabilities to the things you can't control, (b) imagining how X will play out in each of those possible worlds, (c) seeing how happy you end up as a result, and (d) averaging across all those possible outcomes.
+
+What you're *not* used to is having the probabilities that you assign in step (a) *depend* on X. That is -- if you're deciding whether to cooperate or defect against me, and God whispers to you, "You're going to cooperate," you don't learn anything about the outside world. Your probability estimate of my cooperation doesn't change.
+
+But with the clone situation, knowing what action you would take *would* change your beliefs! If God whispers to you, "You're going to cooperate (and I'm saying this to the clone too)," then you **know** that your clone is going to cooperate -- because you're going to cooperate, and your clone will do the same thing you do. Learning your actions tells you about the outside world.
+
+And **that's** what's so upsetting about this.
+
+
+
+III. Fancy Math
+---------------
+
+Wait! I know math is boring, but if you have much stats background at all, I bet you'll get a kick out of this, and it should make the above explanation a lot clearer. There are only a couple equations, and they're real simple, I promise.
+
+Okay. Let's introduce two random variables: $S$ (representing the not-entirely-known **S**tate of the world), and $A$ (representing the **A**ction you're going to take, which you don't know yet). If you knew that the world was in state $s$ and that you would take action $a$, you could calculate how happy you would be: call that calculation $Util(s, a)$.
+
+When you hear "pick the action that maximizes expected utility," you think:
+
+$$ \mathop{\text{argmax}}\limits_a \left( \mathbb{E}[Util(S, a)] \right) $$
+
+The *mathematically exact* formula for that expression is
+
+$$ \mathbb{E}[Util(S, a)] = \sum_s P(S=s | A=a) \cdot Util(s, a) $$
+
+but you're *used* to approximating
+
+$$ \mathbb{E}[Util(S, a)] \approx \sum_s P(S=s \hphantom{ | A=a}) \cdot Util(s, a) $$
+
+because, *almost always*, your actions are independent of the state of the world -- i.e. knowing what action you would take, knowing $A$, wouldn't change your beliefs about $S$.
+
+But with the clone situation, $A$ and $S$ aren't independent! If you know you'll cooperate, then you know your clone will cooperate too -- which tells you about the state of the rest of the world.
+
+That's it! All this brain-bending confusion just comes from one of our approximations breaking down.
+
+
+
+
+IV. Names
+---------
+
+What should we call this thought process, the thought process where you account for non-independence between your actions and your beliefs?
+
+I propose "AMAC": "action motivated by acausal correlation." [^superrationality]
+
+
+
+V. AMAC In Practice
+-----------------------------
+
+Great, now we have a fancy theoretical description of a weird thought process. We even made up a name for it. But does anybody *actually* think like this? Is it a useful real-world concept?
+
+Good question!
+
+(Okay, this information is filtered through a book and then through [a wiki post][in-practice-src], but I'll present it as fact. If it helps, I think the wiki post's author's epistemic virtue exceeds even my own.)
+
+A couple researchers did an experiment: run two batches of prisoner's dilemma experiments. One batch, the control group, they ran as normal. But for the other batch, they told the second prisoner what the first prisoner had decided.
+
+See, the whole trick with AMAC is that there's a funny correlation between your actions and the outside world. If you and some other person are both participating in the same experiment, evidently there's some amount of similarity between you (not as much as in the clone example, but still, some), so it's reasonable to suspect that you think in similar ways, and therefore that you'll often make the same decision. Your counterpart is more likely to cooperate in a world where you cooperate too: learning whether you'll cooperate would give you some information about whether they'll cooperate.
+
+But if you *already know* your counterpart's decision -- well, then, there's no more information to be had! Learning whether you'll cooperate can't teach you anything more abobut whether they'll cooperate. So, if people use AMAC in practice, they should defect substantially more often when they've been told their counterparts' decision.
+
+Do we see this effect?
+
+**Strongly.** 37% cooperate knowing nothing; 3% cooperate knowing their counterpart defected; 16% cooperate knowing their counterpart cooperated.
+
+If one is cynical (and one is), one might remark that in a world where people cooperate because of a sense of justice, or fairness, you'd expect *more* people to cooperate after being told their counterpart cooperated. In a world where the effects of AMAC are exactly as strong as people's sense of justice, you'd expect the *same* number of people to cooperate. The fact that **less than half as many** people cooperate suggests that AMAC is far, far stronger than any considerations of honor or justice.
+
+<br/>
+<i>This same framework provides an elegant solution to a lot of things -- e.g. Newcomb's problem, eternal defection in the iterated prisoner's dilemma, vegetarianism -- but this post is long enough as-is. More on this soon.</i>
+
+<br/><br/>
+<hr/><hr/><hr/><hr/>
+<br/><br/>
+
+
+[^superrationality]: There's actually already a word associated with this, so I feel the need to defend my choice to make up a new name. The standard word (coined by Hofstadter, I think) is "superrationality"; but that makes it sound like when people talk about "rationality," they're referring to some kind of "regular rationality" which is weaker than this "superrationality." I think that's wrong.
+
+
+[prisoners-dilemma]: https://en.wikipedia.org/wiki/Prisoner%27s_dilemma
+[in-practice-src]: http://lesswrong.com/lw/dgc/interlude_for_behavioral_economics/
