@@ -110,7 +110,7 @@ If one is cynical (and one is), one might remark that in a world where people co
 <br/><br/>
 
 
-[^superrationality]: There's actually already a word associated with this, so I feel the need to defend my choice to make up a new name. The standard word (coined by Hofstadter, I think) is "superrationality"; but that makes it sound like when people talk about "rationality," they're referring to some kind of "regular rationality" which is weaker than this "superrationality." I think that's wrong.
+[^superrationality]: There's actually already a word associated with this, so I feel the need to defend my choice to make up a new name. The standard word (coined by Hofstadter, I think) is "superrationality"; but that makes it sound like when people talk about "rationality," they're referring to some kind of "regular rationality" which is weaker than this "superrationality." I think that's wrong, and because names have power, we need a new one.
 
 
 [prisoners-dilemma]: https://en.wikipedia.org/wiki/Prisoner%27s_dilemma
