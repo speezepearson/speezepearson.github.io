@@ -121,11 +121,9 @@ $$ ln\mathcal{N}(0, R) : ln\mathcal{N}(0, R) : ln\mathcal{N}(0, R) : ln\mathcal{
 
 (where the 4th suspect is the criminal).
 
-I'm sure (by pure intuition) that in this situation, the detective's best strategy is to finger the most suspicious person. Unfortunately, I can't find a closed-form formula for how often this strategy wins.
+I'm sure (by pure intuition) that in this situation, the detective's best strategy is to finger the most suspicious person. Unfortunately, I can't find a closed-form formula for how often this strategy wins. However, we can see several intuitively appealing features emerging:
 
-Unfortunately, I can't find a closed-form solution to that question. However, we can see several intuitively appealing features emerging:
-
-- As $S \rightarrow \infty$, the detective loses: if you take enough samples from $ln\mathcal{N}(0, R)$, you'll eventually get something larger than your sample from $ln\mathcal{N}(0, R)$.
+- As $S \rightarrow \infty$, the detective loses: if you take enough samples from $ln\mathcal{N}(0, R)$, you'll eventually get something larger than your sample from $ln\mathcal{N}(RC, R)$.
 
 - When $C=0$, the criminal looks just like an innocent; the detective is reduced to random guessing. As $C \rightarrow \infty$, the criminal becomes incredibly suspicious and easy to identify.
 
