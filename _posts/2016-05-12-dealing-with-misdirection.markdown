@@ -150,7 +150,7 @@ All the suspects are indistinguishable! The detective has no better course than 
 
 #### IV(c): Special Case: $C=0$
 
-In this case, the criminal is no more suspicious than an innocent. The detective's best course must be, again, random guessing. And as long as the criminal doesn't add fake evidence that incriminates them, this is still the best they can hope for.
+In this case, the criminal is no more suspicious than an innocent. The detective's best course must be, again, random guessing. And as long as the criminal doesn't do something phenomenally stupid, adding fake evidence to incriminate themself, this is still the best they can hope for.
 
 
 #### IV(d): The General Case
