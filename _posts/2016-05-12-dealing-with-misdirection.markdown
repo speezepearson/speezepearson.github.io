@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Dealing with Misdirection"
-date:   2016-05-11 12:00:00 -0800
+date:   2016-05-21 12:00:00 -0800
 categories: puzzles
 summary: "How do you make decisions when you know that somebody's trying to mislead you?"
 ---
