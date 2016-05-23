@@ -9,7 +9,7 @@ summary: "How do you make decisions when you know that somebody's trying to misl
 <em>Content warning: nerd sniping.</em><br/>
 
 <br/>
-<div style="color: #222; font-family: 'PT Serif', serif; margin: 0 1em; padding: 0 1em; border-left: 3px solid #bbb">
+<div style="font-family: 'PT Serif', serif; margin: 0 1em; padding: 0 1em; border-left: 3px solid #bbb">
   <p><em>But if it's you behind all of this, Professor, you might have shaped your plans to frame the Headmaster, and taken care to cast suspicion on him in advance.</em></p>
 
   <p>The concept of 'evidence' had something of a different meaning, when you were dealing with someone who had declared themselves to play the game at 'one level higher than you'.</p>
