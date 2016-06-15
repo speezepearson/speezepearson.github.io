@@ -63,7 +63,7 @@ i.e. "If this weatherman is as good as possible, if he made these predictions, w
 
 I'm not sure if there's a clever way to answer this question -- but what we *can* do is, for any given predictions, generate a zillion outcome-sets *assuming that the weatherman is ideal*, and see how often those outcome-sets' surprises are larger than the observed ones.
 
-For the heck of it, I applied this technique to [Scott Alexander's 34 2015 predictions][ssc-predictions], and got a p-value of .86, meaning that we don't have any evidence Scott isn't ideal.
+For the heck of it, I applied this technique to [Scott Alexander's 34 2015 predictions][ssc-predictions], and got a p-value of .86, meaning that we continue to not have any evidence Scott isn't ideal.
 
 
 [wiki-self-information]: https://en.wikipedia.org/wiki/Self-information
