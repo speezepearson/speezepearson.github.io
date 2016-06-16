@@ -18,7 +18,7 @@ Things I Get Excited About
 
 - Communicating effectively, especially in teaching.
 
-- [Harry Potter and the Methods of Rationality][hpmor] has improved my mind more than anything else in the world, except my closest friends and relatives.
+- Forming correct beliefs. [Harry Potter and the Methods of Rationality][hpmor] has improved my mind more than anything else in the world, except my closest friends and relatives.
 
 [hpmor]: http://hpmor.com/chapter/1
 
