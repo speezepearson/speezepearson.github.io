@@ -26,9 +26,13 @@ Things I Get Excited About
 Things I've Done
 ================
 
-- I wrote <a href="https://github.com/speezepearson/browsergui">a super-simple, super-portable GUI library for Python</a>. It has no dependencies (other than Python 2.7 or later), and uses a browser as a front-end, thereby not requiring Qt or wxWidgets or PyObjC or any other low-level libraries that will flood you with abstruse error messages when you try to install them. It has run out-of-the-box on every system I've tried it on.
+- I wrote [a super-simple, super-portable GUI library for Python][browsergui]. It has no dependencies (other than Python 2.7 or later), and uses a browser as a front-end, thereby not requiring Qt or wxWidgets or PyObjC or any other low-level libraries that will flood you with abstruse error messages when you try to install them. It has run out-of-the-box on every system I've tried it on.
+
+- I wrote [a library that lets you place figures in standalone Markdown documents][panfig]. It's a Pandoc filter that looks for special code blocks, and runs the code in the code blocks to generate an image for the output document. Very simple, very flexible, and I've gotten great use out of it.
 
 - I graduated from UC Santa Barbara, majoring in Physics and CS. I got accepted to U.Washington, where I now work with [Michael Ernst][mernst] on software-engineering-type stuff. This includes some fault localization (see Section III [here](/compsci/research/2016/03/20/automated-debugging.html) for a brief overview; paper forthcoming), and a little bit of abstract type inference (in progress).
 
-[mernst]: (https://homes.cs.washington.edu/~mernst/).
+[mernst]: https://homes.cs.washington.edu/~mernst/.
 [github]: https://github.com/speezepearson
+[browsergui]: https://github.com/speezepearson/browsergui
+[panfig]: https://github.com/speezepearson/panfig
