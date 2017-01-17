@@ -31,6 +31,8 @@ Things I've Done
 
 - I graduated from UC Santa Barbara, majoring in Physics and CS. I got accepted to U.Washington, where I now work with [Michael Ernst][mernst] on software-engineering-type stuff. I'm wrapping up a project on fault localization ([brief overview](/compsci/research/2016/03/20/automated-debugging.html), [fancy paper](http://www.cs.washington.edu/tr/2016/08/UW-CSE-16-08-03.pdf), and will soon get my MS and flee academia.
 
+<!-- (secret marker) -->
+
 [hpmor]: http://hpmor.com/chapter/1
 [mernst]: https://homes.cs.washington.edu/~mernst/.
 [github]: https://github.com/speezepearson
