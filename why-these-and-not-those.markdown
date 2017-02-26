@@ -57,6 +57,6 @@ The game is very simple and very easy to customize. Some variations:
 
 <br/>
 
-On a math-nerd note, this game is also pleasingly simple from an information-theoretic perspective: every (good) question gives you one bit of information, so the number of questions you have to ask is just the entropy of your probability distribution over potential rules.
+I love this game because (a) it requires no equipment, (b) it has excellent replay value, and (c) it is a pure, unadulterated exercise for your most important skill: pattern recognition. On a math-nerd note, it's also pleasingly simple from an information-theoretic perspective: every (good) question gives you one bit of information, so the number of questions you have to ask is just the entropy of your probability distribution over potential rules.
 
 One last thought: you can generalize this game *still further* by allowing the response to be *anything,* not just "yes" or "no." (I grew up thinking that "Make me say six" was a common game for parents to play with their children: the parent thinks of some mathematical function, like $(x-4)^2 - 3$, and the child names numbers, and the parent responds with the function applied to those numbers; the child is supposed identify the function and figure out how to make the parent say six. I learned a few years ago that no, that wasn't normal, that was just my dad.)
