@@ -18,17 +18,17 @@ examples:
     validation: "Input must be a triplet of numbers, separated by commas."
   - name: permutations
     rule: >
-      It must take an even number of swaps between two digits to transform the input into 123456.
-    positive_example: "123456"
+      It must take an even number of swaps between two letters to transform the input into abcdef.
+    positive_example: "abcdef"
     predicate: >
       function(s) {
         var chars = s.split('');
         var sorted = chars.slice().sort();
-        if (!arraysEqual(sorted, '123456'.split(''))) throw 'not a permutation';
+        if (!arraysEqual(sorted, 'abcdef'.split(''))) throw 'not a permutation';
         return (countInversions(chars)%2 == 0);
       }
-    category: "permutations of the digits 123456"
-    validation: "Input must be a rearrangement of the digits 1-6."
+    category: "permutations of the letters abcdef"
+    validation: "Input must be a rearrangement of the digits a-f."
 ---
 
 Let me share my favorite game with you.
