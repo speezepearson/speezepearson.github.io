@@ -16,6 +16,7 @@ examples:
         return (countInversions(chars)%2 == 0);
       }
     category: "permutations of the digits 0123456789"
+    validation: "Input must be a rearrangement of the digits 0-9."
   - name: 246
     rule: >
       The triplet must be sorted, from smallest to largest.
@@ -28,6 +29,7 @@ examples:
         return arraysEqual(nums, nums.slice().sort(function(a,b){return a - b}));
       }
     category: "triplets of numbers"
+    validation: "Input must be a triplet of numbers, separated by commas."
 ---
 
 Let me share my favorite game with you.
@@ -139,18 +141,28 @@ function arraysEqual(a, b) {
   return true;
 }
 function runGuess($game, test) {
+  $game.find('.validation').hide();
   var $input = $game.find('.input');
   var input = $input.val(); $input.val('');
   $input.focus();
-  var $examples = $game.find(test(input) ? '.positive-examples' : '.negative-examples');
-  $examples.append($('<li>'+input+'</li>'));
+  try {
+    console.log('hi');
+    var $examples = $game.find(test(input) ? '.positive-examples' : '.negative-examples');
+    $examples.append($('<li>'+input+'</li>'));
+  } catch (e) {
+    $game.find('.validation').show();
+  }
 }
 </script>
 
 {% for example in page.examples %}
 <div class="game" id="game-{{example.name}}" style="border: 1px solid gray; padding: 1em">
 <p>I have a rule that applies to {{example.category}}.</p>
-<input class="input" onkeydown="if (event.keyCode==13) { runGuess($('#game-{{example.name}}'), {{example.predicate}});}"/><button onclick="runGuess($('#game-{{example.name}}'), {{example.predicate}});">Test</button><br/>
+
+<input class="input" onkeydown="if (event.keyCode==13) { runGuess($('#game-{{example.name}}'), {{example.predicate}});}"/>
+<button onclick="runGuess($('#game-{{example.name}}'), {{example.predicate}});">Test</button>
+<span class="validation" style="color:red; display:none">{{example.validation}}</span><br/>
+
 Solution: <span style="border: 1px solid gray">
   <a onclick="
     if (this.innerHTML=='show') {
