@@ -17,17 +17,18 @@ examples:
     category: "triplets of numbers"
     validation: "Input must be a triplet of numbers, separated by commas."
   - name: permutations
+    category: "permutations of the letters abcdef"
     rule: >
-      It must take an even number of swaps between two letters to transform the input into abcdef.
+      At least one letter must be in its original position.
     positive_example: "abcdef"
     predicate: >
       function(s) {
         var chars = s.split('');
         var sorted = chars.slice().sort();
         if (!arraysEqual(sorted, 'abcdef'.split(''))) throw 'not a permutation';
-        return (countInversions(chars)%2 == 0);
+        for (var i=0; i<6; i++) if (chars[i] === sorted[i]) return true;
+        return false;
       }
-    category: "permutations of the letters abcdef"
     validation: "Input must be a rearrangement of the digits a-f."
 ---
 
