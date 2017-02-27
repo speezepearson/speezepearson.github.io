@@ -3,19 +3,6 @@ layout: post
 title:  "Why these and not those?"
 date:   2017-01-13 12:00:00 -0800
 examples:
-  - name: permutations
-    rule: >
-      It must take an even number of swaps between two digits to transform the input into 0123456789.
-    positive_example: 0123456789
-    predicate: >
-      function(s) {
-        var chars = s.split('');
-        var sorted = chars.slice().sort();
-        if (!arraysEqual(sorted, '0123456789'.split(''))) throw 'not a permutation';
-        return (countInversions(chars)%2 == 0);
-      }
-    category: "permutations of the digits 0123456789"
-    validation: "Input must be a rearrangement of the digits 0-9."
   - name: 246
     rule: >
       The triplet must be sorted, from smallest to largest.
@@ -29,6 +16,19 @@ examples:
       }
     category: "triplets of numbers"
     validation: "Input must be a triplet of numbers, separated by commas."
+  - name: permutations
+    rule: >
+      It must take an even number of swaps between two digits to transform the input into 0123456789.
+    positive_example: 0123456789
+    predicate: >
+      function(s) {
+        var chars = s.split('');
+        var sorted = chars.slice().sort();
+        if (!arraysEqual(sorted, '0123456789'.split(''))) throw 'not a permutation';
+        return (countInversions(chars)%2 == 0);
+      }
+    category: "permutations of the digits 0123456789"
+    validation: "Input must be a rearrangement of the digits 0-9."
 ---
 
 Let me share my favorite game with you.
