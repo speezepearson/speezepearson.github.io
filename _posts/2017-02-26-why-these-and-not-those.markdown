@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why these and not those?"
-date:   2017-01-13 12:00:00 -0800
+date:   2017-02-26 12:00:00 -0800
 examples:
   - name: 246
     rule: >
