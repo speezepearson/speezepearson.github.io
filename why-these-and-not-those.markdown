@@ -65,7 +65,7 @@ I call this game, "Why these and not those?" I've seen special cases called by a
 
 * In **[Zendo](https://en.wikipedia.org/wiki/Zendo_(game))**, the rule applies to arrangements of colored pyramids.
 
-* In **"tree or Stalin,"** somebody has an object in mind, and answers questions of the form "Is it more like \_\_\_\_ or more like \_\_\_\_?" (The traditional first question is, "Is it more like a tree or more like Stalin?")
+* In **"tree or Stalin,"** somebody has an object in mind, and answers questions of the form "Is it more like \_\_\_\_ or more like \_\_\_\_?" (The traditional first question is, "Is it more like a tree or more like Stalin?") This is trivial to recast into the same shape as 20 questions or Zendo or 2-4-6.
 
 <br/>
 
