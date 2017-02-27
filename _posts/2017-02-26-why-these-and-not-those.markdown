@@ -2,7 +2,6 @@
 layout: post
 title:  "Why these and not those?"
 date:   2017-01-13 12:00:00 -0800
-hidden: true
 examples:
   - name: permutations
     rule: >
