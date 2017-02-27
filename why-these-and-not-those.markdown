@@ -11,7 +11,7 @@ Let me share my favorite game with you.
 >
 > Identify the rule.
 
-I call this game, "Why these and not those?" I've seen it by a few different names:
+I call this game, "Why these and not those?" I've seen special cases called by a few different names:
 
 * In **[the 2-4-6 game](https://en.wikipedia.org/wiki/Bongard_problem)**, the rule applies to triplets of numbers.
     (The name of the game comes from the fact that "2-4-6 satisfies the rule" is a freebie when using the canonical rule that
@@ -29,7 +29,7 @@ I call this game, "Why these and not those?" I've seen it by a few different nam
 
 * In **20 questions**, the rule applies to properties an object might have. (You're also guaranteed that there exists some object that has all of the "yes" properties and none of the "no" properties.)
 
-* In "Green Glass Door," the rule applies to objects. There is a door that allows some objects to pass through, but rejects others.
+* In **"Green Glass Door,"** the rule applies to objects. There is a door that allows some objects to pass through, but rejects others.
     (As with 2-4-6, there's a canonical rule:
     <span style="border: 1px solid gray">
       <a onclick="
@@ -47,15 +47,18 @@ I call this game, "Why these and not those?" I've seen it by a few different nam
 
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Bongard_problem_convex_polygons.svg" style="max-width:30em" />
 
+* In **[Zendo](https://en.wikipedia.org/wiki/Zendo_(game))**, the rule applies to arrangements of colored pyramids.
+
+* In **"tree or Stalin,"** somebody has an object in mind, and answers questions of the form "Is it more like \_\_\_\_ or more like \_\_\_\_?" (The traditional first question is, "Is it more like a tree or more like Stalin?")
+
 <br/>
 
 The game is very simple and very easy to customize. Some variations:
 
 * My rule applies to doodles. Doodle things and I'll tell you which ones satisfy the rule.
 * My rule applies to words. Say words and I'll tell you which ones satisfy the rule.
-* My rule applies to numbers. Cities. Chemicals. People. Web sites. Plants. Machines. Insects. Books. Board games. Diseases. Professions. Monarchs. Memes. Clothing items. Mixed drinks. Cognitive biases. Funny faces. Species of snake. Kinds of furniture. Permutations of the letters of the alphabet. Directed acyclic graphs. Disney princesses. Celestial bodies. Musical instruments. Chores. Fabrics. Kinks. Brands. Phyla. Things in the same room as you. Activities you do with people. Unusual uses for objects. Categories of thing. Rules you could use for this game. Really, any class of objects where examples are easy to specify and reason about.
+* My rule applies to numbers. Cities. Chemicals. People. Web sites. Plants. Machines. Insects. Books. Board games. Diseases. Professions. Monarchs. Memes. Clothing items. Mixed drinks. Cognitive biases. Species of snake. Kinds of furniture. Permutations of the letters of the alphabet. Directed acyclic graphs. Disney princesses. Celestial bodies. Musical instruments. Chores. Fabrics. Kinks. Brands. Phyla. Things in the same room as you. Activities you do with people. Unusual uses for objects. Categories of thing. Rules you could use for this game. Really, any class of objects where examples are easy to specify and reason about.
 
-<br/>
 
 I love this game because (a) it requires no equipment, (b) it has excellent replay value, and (c) it is a pure, unadulterated exercise for your most important skill: pattern recognition. On a math-nerd note, it's also pleasingly simple from an information-theoretic perspective: every (good) question gives you one bit of information, so the number of questions you have to ask is just the entropy of your probability distribution over potential rules.
 
