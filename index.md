@@ -29,12 +29,12 @@ Things I've Done
 
 - I wrote [a library that lets you place figures in standalone Markdown documents][panfig]. It's a Pandoc filter that looks for special code blocks, and runs the code in the code blocks to generate an image for the output document. Very simple, very flexible, and I've gotten great use out of it.
 
-- I got a MS in computer science from the University of Washington's Allen School, working with [Michael Ernst][mernst] on [fault localization][fl-paper].
+- I got BSes in physics and CS from UC Santa Barbara, and then a MS in CS from the University of Washington's Allen School, working with [Michael Ernst][mernst] on [fault localization][fl-paper].
 
 <!-- (secret marker) -->
 
 [hpmor]: http://hpmor.com/chapter/1
-[mernst]: https://homes.cs.washington.edu/~mernst/.
+[mernst]: https://homes.cs.washington.edu/~mernst/
 [github]: https://github.com/speezepearson
 [browsergui]: https://github.com/speezepearson/browsergui
 [panfig]: https://github.com/speezepearson/panfig
