@@ -5,7 +5,7 @@ title: Home
 
 <img id="profile-picture" src="/resources/img/profile-picture.jpg" />
 
-I'm Spencer Pearson, a recent University of Washington graduate. Photo on the right.
+I'm Spencer Pearson, a software-developer type who recently graduated from the University of Washington's Allen School's CS program (with a MS). Photo on the right.
 
 Everything on this page is up-to-date as of [June 23, 2017].
 
