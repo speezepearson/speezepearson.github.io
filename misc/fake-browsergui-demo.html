@@ -122,10 +122,11 @@ Link("google", url="http://google.com")
               <td style="border: 1px solid black">
                 <pre id="_element_27">
 click_count = Text('0')
+button = Button('Click me!')
+@button.def_callback
 def button_clicked():
   n = int(click_count.text)
   click_count.text = str(n+1)
-button = Button('Click me!', callback=button_clicked)
 
 Container(click_count, button)
 </pre>
@@ -143,12 +144,13 @@ Container(click_count, button)
               <td style="border: 1px solid black">
                 <pre id="_element_31">
 slider_value_squared = Text('')
+slider = FloatSlider(min=0, max=10)
+@slider.def_change_callback
 def slider_changed():
   if slider.value is None:
     slider_value_squared.text = ''
   else:
     slider_value_squared.text = '{:.3g}'.format(slider.value ** 2)
-slider = FloatSlider(min=0, max=10, change_callback=slider_changed)
 slider.value = 3
 
 Container(slider, slider_value_squared)
@@ -168,10 +170,11 @@ Container(slider, slider_value_squared)
               <td style="border: 1px solid black">
                 <pre id="_element_35">
 reversed_text_field_contents = Text('')
+text_field = TextField()
+@text_field.def_change_callback
 def text_field_changed():
   reversed_contents = ''.join(reversed(text_field.value))
   reversed_text_field_contents.text = reversed_contents
-text_field = TextField(change_callback=text_field_changed)
 text_field.value = "Reversed"
 
 Container(text_field, reversed_text_field_contents)
@@ -191,10 +194,11 @@ Container(text_field, reversed_text_field_contents)
               <td style="border: 1px solid black">
                 <pre id="_element_39">
 reversed_text_field_contents = Text('')
+text_field = BigTextField()
+@text_field.def_change_callback
 def text_field_changed():
   reversed_contents = ''.join(reversed(text_field.value))
   reversed_text_field_contents.text = reversed_contents
-text_field = BigTextField(change_callback=text_field_changed)
 text_field.value = "Reversed"
 
 Container(text_field, reversed_text_field_contents)
@@ -253,12 +257,13 @@ Container(dropdown, selected_dropdown_item)
               <td style="border: 1px solid black">
                 <pre id="_element_47">
 number_field_squared = Text('')
+number_field = NumberField()
+@number_field.def_change_callback
 def number_changed():
   if number_field.value is None:
     number_field_squared.text = ''
   else:
     number_field_squared.text = str(number_field.value ** 2)
-number_field = NumberField(change_callback=number_changed)
 number_field.value = 12
 
 Container(number_field, number_field_squared)
@@ -278,11 +283,12 @@ Container(number_field, number_field_squared)
               <td style="border: 1px solid black">
                 <pre id="_element_51">
 colored_text = Text('colored')
+color_field = ColorField()
+@color_field.def_change_callback
 def color_changed():
   color = color_field.value
   color_hex = '#{:02x}{:02x}{:02x}'.format(*color)
   colored_text.css['color'] = color_hex
-color_field = ColorField(change_callback=color_changed)
 color_field.value = (0, 0, 255)
 
 Container(color_field, colored_text)
@@ -305,12 +311,13 @@ Container(color_field, colored_text)
 weekday_text = Text('...')
 DAYS = ('Monday', 'Tuesday', 'Wednesday', 'Thursday',
         'Friday', 'Saturday', 'Sunday')
+date_field = DateField()
+@date_field.def_change_callback
 def date_changed():
   if date_field.value is None:
     weekday_text.text = ''
   else:
     weekday_text.text = DAYS[date_field.value.weekday()]
-date_field = DateField(change_callback=date_changed)
 
 Container(date_field, weekday_text)
 </pre>
