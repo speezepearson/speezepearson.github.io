@@ -1,0 +1,46 @@
+.wiki-page-main #sidebar{
+  display: none;
+}
+.wiki-page-main #content{
+  width: 900px;
+}
+.wiki-page-main #wiki {
+  padding-right: 150px;
+  padding-left: 150px;
+  font-size: 16px;
+}
+.wiki-page-main .article-list {
+  font-size: 13px;
+  width: 280px;
+}
+
+.wiki-page-main .sequences-button {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.wiki-page-main .sequences-button > p {
+  margin-bottom: 0px;
+}
+
+.wiki-page-main .sequences-button > p > a {
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.wiki-page-main .org-table {
+  font-size: 20px;
+}
+
+.wiki-page-main .org-table > td > a {
+  text-decoration: none;
+}
+
+/*
+     FILE ARCHIVED ON 13:44:29 Apr 25, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:57:59 Aug 23, 2017.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/

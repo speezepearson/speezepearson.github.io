@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- saved from url=(0108)https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/ -->
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include -->
+<title>
+Nash Equilibria and Schelling Points - Less Wrong
+</title>
+<meta content="
+rationality, optimal philanthropy, critical thinking, heuristics and biases, skeptic
+" name="keywords"/>
+<meta content="
+Nash Equilibria and Schelling Points - Less Wrong
+" name="title"/>
+<meta content="A Nash equilibrium is an outcome in which neither player is willing to unilaterally change her strategy, and they are often applied to games in which both playe" name="description"/>
+<!-- Start Visual Website Optimizer Asynchronous Code -->
+<!-- End Visual Website Optimizer Asynchronous Code -->
+<!--[if lte IE 8]>
+<script src="/static/ie8below.js?v=(stdin)= 78e6f09c93f01df69ddef0ced465a511" type="text/javascript"></script>
+<![endif]-->
+<link href="./2_files/main.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/Stylesheet" rel="stylesheet" type="text/css"/>
+<link href="./2_files/lesswrong.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/jquery.qtip.css" rel="stylesheet" type="text/css"/>
+<!--[if lte IE 8]>
+<link rel="stylesheet" type="text/css" href="/static/ie8below.css?v=(stdin)= 211a53181ad64730403441f5147876f4" />
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="/static/ie7below.css?v=(stdin)= b43edf2e0f3764458e9118be01eab834" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="/static/ie7.css?v=(stdin)= d41d8cd98f00b204e9800998ecf8427e" />
+<![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="/static/ie6.css?v=(stdin)= 8057c056f59a32b0740514cbe26ea377" />
+<![endif]-->
+<link href="https://web.archive.org/web/20150626005037im_/http://lesswrong.com/static/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/.rss" rel="alternate" title="RSS" type="application/rss+xml"/>
+<link href="./2_files/default+ja.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="post" onclick="close_menus()">
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  min-width:800px !important;
+}
+.wb-autocomplete-suggestions {
+    text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+    position: absolute; display: none; z-index: 2147483647; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+}
+.wb-autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
+.wb-autocomplete-suggestion b { font-weight: bold; }
+.wb-autocomplete-suggestion.selected { background: #f0f0f0; }
+</style>
+<div class="wb-autocomplete-suggestions " style="left: 366px; top: 273px; width: 404px;"></div>
+<!-- END WAYBACK TOOLBAR INSERT -->
+<div id="wrapper">
+<div class="lesswrong" id="header">
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/" id="logo">
+<img alt="Less Wrong" id="header-img" src="./2_files/logo_trans.png"/>
+</a>
+<img alt="A community blog devoted to refining the art of human rationality" id="tagline" src="./2_files/tagline.png"/>
+<a href="https://web.archive.org/web/20150626005037/http://www.fhi.ox.ac.uk/" id="fhi" target="_blank">Future of Humanity Institute</a>
+<a href="https://web.archive.org/web/20150626005037/http://intelligence.org/" id="miri" target="_blank">Machine Intelligence Research Institute</a>
+<a href="https://web.archive.org/web/20150626005037/http://rationality.org/" id="cfar" target="_blank">Center for Applied Rationality</a>
+</div><!-- #header -->
+<div class="clear" id="main">
+<div class="clear " id="content">
+<ul class="clear" id="nav">
+<li class="active">
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/promoted/">Main</a>
+<img alt="" class="dropdown" src="./2_files/nav-dropdown.gif"/>
+<ul>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/promoted/">Posts</a>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/comments/">Comments</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/r/discussion/new/">Discussion</a>
+<img alt="" class="dropdown" src="./2_files/nav-dropdown.gif"/>
+<ul>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/r/discussion/new/">Posts</a>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/r/discussion/comments/">Comments</a>
+</li>
+</ul>
+</li>
+</ul>
+<div class="infobar"><div class="md"><p>Less Wrong is a community blog devoted to refining the art of human rationality. Please visit our <a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/about-less-wrong/" rel="nofollow">About</a> page for more information.</p></div></div>
+<div class="sitetable" id="siteTable">
+<div class="ajaxhook" id="ajaxHook">
+</div>
+<div class="post" id="thingrow_t3_dc7" itemscope="" itemtype="http://schema.org/BlogPosting">
+<h1 itemprop="name"><a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/">
+Nash Equilibria and Schelling Points
+</a>
+</h1>
+<div class="meta clear">
+<span class="votes">
+<span class="votes " id="score_t3_dc7" oldtitle="100% positive">
+39
+</span>
+</span>
+<span class="author">
+<span class="hide-text">Post author:</span>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/user/Yvain/" id="author_t3_dc7">Yvain</a>
+</span>
+<span class="date">29 June 2012 02:06AM</span>
+</div><!-- .meta -->
+<!--
+<div>
+<i><h0>Part 1 of 13 in the sequence &nbsp; <a href="http://wiki.lesswrong.com/wiki/Mysterious_Answers_to_Mysterious_Questions">Mysterious Answers to Mysterious Questions</a></h0></i>
+<br/>
+<br/>
+</div>
+-->
+<div class="content clear" id="entry_t3_dc7">
+<div class="md">
+<div itemprop="description">
+<div><p>A Nash equilibrium is an outcome in which neither player is willing to unilaterally change her strategy, and they are often applied to games in which both players move simultaneously and where decision trees are less useful. <br/><br/>Suppose my girlfriend and I have both lost our cell phones and cannot contact each other. Both of us would really like to spend more time at home with each other (utility 3). But both of us also have a slight preference in favor of working late and earning some overtime (utility 2). If I go home and my girlfriend's there and I can spend time with her, great. If I stay at work and make some money, that would be pretty okay too. But if I go home and my girlfriend's not there and I have to sit around alone all night, that would be the worst possible outcome (utility 1). Meanwhile, my girlfriend has the same set of preferences: she wants to spend time with me, she'd be okay with working late, but she doesn't want to sit at home alone.<br/><br/><img alt="" height="287" src="./2_files/nash_girlfriend.png" width="355"/><br/><br/>This “game” has two Nash equilibria. If we both go home, neither of us regrets it: we can spend time with each other and we've both got our highest utility. If we both stay at work, again, neither of us regrets it: since my girlfriend is at work, I am glad I stayed at work instead of going home, and since I am at work, my girlfriend is glad she stayed at work instead of going home. Although we both may wish that we had both gone home, neither of us specifically regrets our own choice, given our knowledge of how the other acted.<br/><br/>When all players in a game are reasonable, the (apparently) rational choice will be to go for a Nash equilibrium (why would you want to make a choice you'll regret when you know what the other player chose?) And since John Nash (remember that movie <em>A Beautiful Mind</em>?) proved that every game has at least one, all games between well-informed rationalists (who are not also being superrational in a sense to be discussed later) should end in one of these.<br/><br/>What if the game seems specifically designed to thwart Nash equilibria? Suppose you are a general invading an enemy country's heartland. You can attack one of two targets, East City or West City (you declared war on them because you were offended by their uncreative toponyms). The enemy general only has enough troops to defend one of the two cities. If you attack an undefended city, you can capture it easily, but if you attack the city with the enemy army, they will successfully fight you off.</p>
+<p><img alt="" height="283" src="./2_files/nash_city.png" width="335"/><br/><br/>Here there is no Nash equilibrium without introducing randomness. If both you and your enemy choose to go to East City, you will regret your choice - you should have gone to West and taken it undefended. If you go to East and he goes to West, he will regret his choice - he should have gone East and stopped you in your tracks. Reverse the names, and the same is true of the branches where you go to West City. So every option has someone regretting their choice, and there is no simple Nash equilibrium. What do you do?<br/><br/>Here the answer should be obvious: it doesn't matter. Flip a coin. If you flip a coin, and your opponent flips a coin, neither of you will regret your choice. Here we see a "mixed Nash equilibrium", an equilibrium reached with the help of randomness.<br/><br/>We can formalize this further. Suppose you are attacking a different country with two new potential targets: Metropolis and Podunk. Metropolis is a rich and strategically important city (utility: 10); Podunk is an out of the way hamlet barely worth the trouble of capturing it (utility: 1).</p>
+<p><br/><br/><img alt="" height="285" src="./2_files/nash_city2.png" width="338"/></p>
+<p>A so-called first-level player thinks: “Well, Metropolis is a better prize, so I might as well attack that one. That way, if I win I get 10 utility instead of 1”<br/><br/>A second-level player thinks: “Obviously Metropolis is a better prize, so my enemy expects me to attack that one. So if I attack Podunk, he'll never see it coming and I can take the city undefended.”<br/><br/>A third-level player thinks: “Obviously Metropolis is a better prize, so anyone clever would never do something as obvious as attack there. They'd attack Podunk instead. But my opponent knows that, so, seeking to stay one step ahead of me, he has defended Podunk. He will never expect me to attack Metropolis, because that would be too obvious. Therefore, the city will actually be undefended, so I should take Metropolis.”<br/><br/>And so on ad infinitum, until you become hopelessly confused and have no choice but to spend years developing a resistance to iocane powder.<br/><br/>But surprisingly, there is a single best solution to this problem, even if you are playing against an opponent who, like Professor Quirrell, plays “one level higher than you.”<br/><br/>When the two cities were equally valuable, we solved our problem by flipping a coin. That won't be the best choice this time. Suppose we flipped a coin and attacked Metropolis when we got heads, and Podunk when we got tails. Since my opponent can predict my strategy, he would defend Metropolis every time; I am equally likely to attack Podunk and Metropolis, but taking Metropolis would cost them much more utility. My total expected utility from flipping the coin is 0.5: half the time I successfully take Podunk and gain 1 utility, and half the time I am defeated at Metropolis and gain 0.And this is not a Nash equilibrium: if I had known my opponent's strategy was to defend Metropolis every time, I would have skipped the coin flip and gone straight for Podunk.<br/><br/>So how can I find a Nash equilibrium? In a Nash equilibrium, I don't regret my strategy when I learn my opponent's action. If I can come up with a strategy that pays exactly the same utility whether my opponent defends Podunk or Metropolis, it will have this useful property. We'll start by supposing I am flipping a <em>biased</em> coin that lands on Metropolis x percent of the time, and therefore on Podunk (1-x) percent of the time. To be truly indifferent which city my opponent defends, 10x (the utility my strategy earns when my opponent leaves Metropolis undefended) should equal 1(1-x) (the utility my strategy earns when my opponent leaves Podunk undefended). Some quick algebra finds that 10x = 1(1-x) is satisfied by x = 1/11. So I should attack Metropolis 1/11 of the time and Podunk 10/11 of the time.<br/><br/>My opponent, going through a similar process, comes up with the suspiciously similar result that he should defend Metropolis 10/11 of the time, and Podunk 1/11 of the time.<br/><br/>If we both pursue our chosen strategies, I gain an average 0.9090... utility each round, soundly beating my previous record of 0.5, and my opponent <a href="https://web.archive.org/web/20150626005037/http://en.wikipedia.org/wiki/Minimax_theorem#Minimax_theorem">suspiciously</a> loses an average -.9090 utility. It turns out there is no other strategy I can use to consistently do better than this when my opponent is playing optimally, and that even if I knew my opponent's strategy I would not be able to come up with a better strategy to beat it. It also turns out that there is no other strategy my opponent can use to consistently do better than this if I am playing optimally, and that my opponent, upon learning my strategy, doesn't regret his strategy either.<br/><br/>In <a href="https://web.archive.org/web/20150626005037/http://www.amazon.com/The-Art-Strategy-Theorists-Business/dp/0393062430"><em>The Art of Strategy</em></a>, Dixit and Nalebuff cite a real-life application of the same principle in, of all things, penalty kicks in soccer. A right-footed kicker has a better chance of success if he kicks to the right, but a smart goalie can predict that and will defend to the right; a player expecting this can accept a less spectacular kick to the left if he thinks the left will be undefended, but a very smart goalie can predict this too, and so on. Economist Ignacio Palacios-Huerta laboriously analyzed the success rates of various kickers and goalies on the field, <a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/Ignacio%20Palacios-Huerta">and found</a> that they actually pursued a mixed strategy generally within 2% of the game theoretic ideal, proving that people are pretty good at doing these kinds of calculations unconsciously.<br/><br/>So every game really does have at least one Nash equilibrium, even if it's only a mixed strategy. But some games can have many, many more. Recall the situation between me and my girlfriend:</p>
+<p><img alt="" height="283" src="./2_files/nash_girlfriend(1).png" width="350"/><br/><br/>There are two Nash equilibria: both of us working late, and both of us going home. If there were only one equilibrium, and we were both confident in each other's rationality, we could choose that one and there would be no further problem. But in fact this game does present a problem: intuitively it seems like we might still make a mistake and end up in different places.<br/><br/>Here we might be tempted to just leave it to chance; after all, there's a 50% probability we'll both end up choosing the same activity. But other games might have thousands or millions of possible equilibria and so will require a more refined approach.<br/><br/><em>Art of Strategy</em> describes a game show in which two strangers were separately taken to random places in New York and promised a prize if they could successfully meet up; they had no communication with one another and no clues about how such a meeting was to take place. Here there are a nearly infinite number of possible choices: they could both meet at the corner of First Street and First Avenue at 1 PM, they could both meet at First Street and Second Avenue at 1:05 PM, etc. Since neither party would regret their actions (if I went to First and First at 1 and found you there, I would be thrilled) these are all Nash equilibria.<br/><br/>Despite this mind-boggling array of possibilities, in fact all six episodes of this particular game ended with the two contestants meeting successfully after only a few days. The most popular meeting site was the Empire State Building at noon.<br/><br/>How did they do it? The world-famous Empire State Building is what game theorists call focal: it stands out as a natural and obvious target for coordination. Likewise noon, classically considered the very middle of the day, is a focal point in time. These focal points, also called Schelling points after theorist Thomas Schelling who discovered them, provide an obvious target for coordination attempts. <br/><br/>What makes a Schelling point? The most important factor is that it be special. The Empire State Building, depending on when the show took place, may have been the tallest building in New York; noon is the only time that fits the criteria of “exactly in the middle of the day”, except maybe midnight when people would be expected to be too sleepy to meet up properly.<br/><br/>Of course, specialness, like beauty, is in the eye of the beholder. David Friedman writes:</p>
+<blockquote>
+<p><em>Two people are separately confronted with the list of numbers [2, 5, 9, 25, 69, 73, 82, 96, 100, 126, 150 ] and offered a reward if they independently choose the same number. If the two are mathematicians, it is likely that they will both choose 2—the only even prime. Non-mathematicians are likely to choose 100—a number which seems, to the mathematicians, no more unique than the other two exact squares. Illiterates might agree on 69, because of its peculiar symmetry—as would, for a different reason, those whose interest in numbers is more prurient than mathematical.</em></p>
+</blockquote>
+<p>A recent <a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/d3h/open_thread_june_1630_2012/6v8u">open thread comment</a> pointed out that you can justify anything with “for decision-theoretic reasons” or “due to meta-level concerns”. I humbly propose adding “as a Schelling point” to this list, except that the list is tongue-in-cheek and Schelling points really do explain almost everything - <a href="https://web.archive.org/web/20150626005037/http://blog.rivast.com/?p=4808">stock markets</a>, <a href="https://web.archive.org/web/20150626005037/http://iis-db.stanford.edu/evnts/6632/Goemans_-_CISAC_Research_Seminar_Background_Paper_-_New_Borders.pdf">national borders</a>, <a href="https://web.archive.org/web/20150626005037/http://faculty.lebow.drexel.edu/mccainr/top/eco/game/vow/marriage.html">marriages</a>,  <a href="https://web.archive.org/web/20150626005037/http://www.daviddfriedman.com/Academic/Property/Property.html">private property</a>, religions, <a href="https://web.archive.org/web/20150626005037/http://www.ccoyne.com/files/Focal_PDF.PDF">fashion</a>, political parties, peace treaties, social networks, <a href="https://web.archive.org/web/20150626005037/http://www.tinmarine.com/2012/02/schelling-points.html">software platforms</a> and languages all involve or are based upon Schelling points. In fact, whenever something has “symbolic value” a Schelling point is likely to be involved in some way. I hope to expand on this point a bit more later.<br/><br/>Sequential games can include one more method of choosing between Nash equilibria: the idea of a <a href="https://web.archive.org/web/20150626005037/http://en.wikipedia.org/wiki/Subgame_perfect_equilibrium">subgame-perfect equilibrium</a>, a special kind of Nash equlibrium that remains a Nash equilibrium for every subgame of the original game. In more intuitive terms, this equilibrium means that even in a long multiple-move game no one at any point makes a decision that goes against their best interests (remember the example from the last post, where we crossed out the branches in which Clinton made implausible choices that failed to maximize his utility?) Some games have multiple Nash equilibria but only one subgame-perfect one; we'll examine this idea further when we get to the iterated prisoners' dilemma and ultimatum game.<br/><br/>In conclusion, every game has at least one Nash equilibrium, a point at which neither player regrets her strategy even when she knows the other player's strategy. Some equilibria are simple choices, others involve plans to make choices randomly according to certain criteria. Purely rational players will always end up at a Nash equilibrium, but many games will have multiple possible equilibria. If players are trying to coordinate, they may land at a Schelling point, an equilibria which stands out as special in some way.</p></div>
+</div>
+</div>
+</div><!-- .content -->
+<div class="articlenavigation">
+<h4><a class="dsphead" href="javascript:void(0)" id="articlenavstate" onclick="toggle_article_navigation('dc7')">Article Navigation</a></h4>
+<div class="dspcont" id="article_nav_controls" style="display: none;">
+<span class="loading"><img alt="" src="./2_files/ajax-loader.gif"/>
+Loading…</span>
+</div>
+</div><!-- .articlenavigation -->
+<div class="tools clear">
+<div class="vote" id="arrows_t3_dc7">
+<a class="up" id="up_t3_dc7" oldtitle="Vote up" onclick="showcover(true, 'vote_t3_dc7')">Vote up</a>
+<a class="down" id="down_t3_dc7" oldtitle="Vote down" onclick="showcover(true, 'vote_t3_dc7')">Vote down</a>
+<span class="loading" id="votespinner_t3_dc7"><img alt="" src="./2_files/ajax-loader.gif"/></span>
+</div>
+<a class="comment" href="https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/#comments">Comments (74)</a>
+<div class="boxright clear">
+<ul class="clear">
+</ul>
+<div class="tags">
+<span>Tags:</span>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/tag/game_theory/">game_theory</a>
+<span class="separator"> </span>
+</div>
+</div>
+<span class="error" id="status_t3_dc7" style="display: none;"></span>
+</div><!-- .tools -->
+</div><!-- .post -->
+</div>
+
+</div>
+<div id="sidebar">
+<ul class="clear" id="rightnav">
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://wiki.lesswrong.com/">wiki</a>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/sequences/">Sequences</a>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/about/">About</a>
+</li>
+</ul>
+<div class="spacer">
+<div class="sidebox" id="side-search">
+<form action="https://web.archive.org/web/20150626005037/http://lesswrong.com/search/results" id="cse-search-box" onsubmit="return true;">
+<div>
+<input name="cx" type="hidden" value="015839050583929870010:-802ptn4igi"/>
+<input name="cof" type="hidden" value="FORID:11"/>
+<input name="ie" type="hidden" value="UTF-8"/>
+<input class="text" id="search-query" name="q" size="31" style='background: url("http://cse.google.com/cse/intl/en/images/google_custom_search_watermark.gif") left center no-repeat rgb(255, 255, 255);' type="text"/>
+<input class="submit" name="sa" type="submit" value="Search"/>
+</div>
+<input name="siteurl" type="hidden" value="web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/"/><input name="ref" type="hidden" value=""/><input name="ss" type="hidden" value=""/></form>
+<form style="display:none">
+<input id="cse-search-transformed" type="hidden" value="0"/>
+</form>
+</div><!-- #side-search -->
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-login">
+<form action="https://web.archive.org/web/20150626005037/http://lesswrong.com/post/login" class="login-form-side" method="post" onsubmit="return chklogin(this);">
+<div class="row">
+<label for="username">
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/" onclick="return showcover(false);">Register</a>
+/ Login</label>
+<input name="op" type="hidden" value="login-main"/>
+<input id="username" maxlength="20" name="user_login" tabindex="1" type="text"/>
+</div>
+<div class="row">
+<label for="password">Password</label>
+<input id="password" maxlength="20" name="passwd_login" tabindex="2" type="password"/>
+</div>
+<div class="row">
+<div id="remember-me">
+<label for="rem-login-main">Remember me</label>
+<input id="rem-login-main" name="rem" tabindex="3" type="checkbox"/>
+</div>
+</div>
+<div>
+<div class="error" id="WRONG_PASSWORD_login-main">
+</div>
+<div class="error" id="status_login-main"></div>
+</div>
+<div class="row">
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/password" id="recover">Recover password</a>
+<button class="btn" tabindex="4" type="submit">Login</button>
+</div>
+</form>
+</div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-feed">
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/lw/dc7/nash_equilibria_and_schelling_points/.rss">
+<img alt="Feed icon" src="./2_files/feed.png"/>
+Subscribe to RSS Feed
+</a>
+</div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-meetups">
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include --><h2 class="meetup-title">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/meetups">Nearest Meetups</a>
+</h2>
+<ul>
+<li>
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/meetups/1f8">
+San Antonio, TX: <span class="date">12 July 2015 01:30PM</span>
+</a>
+</li>
+<li>
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/meetups/18x">
+Durham, NC (RTLW) Discussion Meetup: <span class="date">02 July 2026 07:00PM</span>
+</a>
+</li>
+</ul></div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-comments">
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include --><h2>
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/comments">Recent Comments</a>
+</h2>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/lw/lx/argument_screens_off_authority/cjxg?context=1#cjxg">&gt;We observe that politicians are happy to cut taxes (for people who can benefit them) if they personally get paid as much or more than before. Why would it be otherwise? Having the ability to take and redistribute someone else's money provides a concentrated benefit to the one doing the taking and redistributing. Cutting taxes produces a much more diffuse benefit. Concentrated benefits lead to Machiavellian behavior much more than diffuse benefits. It is possible, of course, to have an anti-taxes lobbying group which provides a concentrated benefit, but the overall balance between concentrated and diffuse benefits is on the side of the higher taxes.
+&gt;(And any long-term interest, eg power for their family, should take the state of their civilization into account.)
+That would be a diffuse cost. The politician may care about the portion of the diffuse effectthat affects his family, but that's only a small portion of the total. If the politician makes policy based on which costs help him and his family and which ones hurt him and his family, the concentrated ones will win. The ones that affect all civilization, a small portion of which he actually cares about because it goes to his family, will lose.</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Jiro">
+<strong>Jiro</strong></a>
+on
+Argument Screens Off Authority |
+<span id="score_t1_cjxg">0 points</span>
+</span>
+</div>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/lw/1jm/getting_over_dust_theory/cjx9?context=1#cjx9">&gt; don't think there's a meaningful difference between "the real world" and a perfect simulation of it (at least seen "from the inside") -
+What's the meaning of meaningful? Do you mean that you literally cannot understand the opposite of simulationism? Or are using "meaningful" to mean "empirically confirmable"? The empirical indetectability of a simulation follows from simulations premises, right enough....but it cannot be used to argue for them.</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/TheAncientGeek">
+<strong>TheAncientGeek</strong></a>
+on
+Getting Over Dust Theory |
+<span id="score_t1_cjx9">0 points</span>
+</span>
+</div>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/lw/1sm/akrasia_tactics_review/cjwp?context=1#cjwp">**Missing techniques:**
+* [caching your identity](http://lesswrong.com/lw/4e/cached_selves/)
+* [goal factoring](http://lesswrong.com/lw/8gv/the_curse_of_identity/)
+* [solutions for the human memory problem sets in the comments](http://lesswrong.com/lw/iwq/human_memory_problem_set/)
+* [insight into procrastination, which is spread over several posts including this link](http://lesswrong.com/lw/3kv/working_hurts_less_than_procrastinating_we_fear/)
+* [Preempting excuses](http://lesswrong.com/lw/24o/eight_short_studies_on_excuses/)
+**both missing reviews and missing a write up on Lesswrong**
+* [SOBER technique](http://smartrecoveryaustralia.com.au/s-o-b-e-r/)
+**Techniques I've tried and will put up a review for soon hopefully:**
+* [check cosequentialism](http://lesswrong.com/lw/b4f/sotw_check_consequentialism/)</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Clarity">
+<strong>Clarity</strong></a>
+on
+Akrasia Tactics Review |
+<span id="score_t1_cjwp">1 point</span>
+</span>
+</div>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/lw/mgi/rational_vs_reasonable/cjwm?context=1#cjwm">I'd like to become a more reasonable person. How do I change my mindset to make such behaviors more common?</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/27chaos">
+<strong>27chaos</strong></a>
+on
+Rational vs Reasonable |
+<span id="score_t1_cjwm">0 points</span>
+</span>
+</div>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/lw/lx/argument_screens_off_authority/cjwa?context=1#cjwa">No, you did not. A Machiavellan politician wants to stay in power, that is, to be elected. You're asserting a group interest that does not exist. We observe that politicians are happy to cut taxes (for people who can benefit them) if they personally get paid as much or more than before. Why would it be otherwise? (And any long-term interest, eg power for their family, should take the state of their civilization into account.)</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/hairyfigment">
+<strong>hairyfigment</strong></a>
+on
+Argument Screens Off Authority |
+<span id="score_t1_cjwa">0 points</span>
+</span>
+</div></div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-quote">
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include --><h2>
+<a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/r/lesswrong/lw/mez/rationality_quotes_thread_july_2015/">Latest Rationality Quote</a>
+</h2>
+<div class="inline-comment">
+<h3><a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mez/rationality_quotes_thread_july_2015/cjmk?context=1#cjmk">&gt; And when your surpassing creations find the answers you asked for, you can't understand their analysis and you can't verify their answers. You have to take their word on faith —-
+&gt; —- Or you use information theory to *flatten* it for you, to squash the tesseract into two dimensions and the Klein bottle into three, to simplify reality and pray to whatever Gods survived the millennium that your honorable twisting of the truth hasn't ruptured any of its load-bearing pylons. ...
+&gt;I've never convinced myself that we made the right choice. I can cite the usual justifications in my sleep, talk endlessly about the rotational topology of information and the irrelevance of semantic comprehension. But after all the words, I'm still not sure. I don't know if anyone else is, either. Maybe it's just some grand consensual con, marks and players all in league. We won't admit that our creations are beyond us...
+&gt;Maybe the Singularity happened years ago. We just don't want to admit we were left behind.
+&gt; -- Siri Keeton explains what a "synthesist" does in *Blindsight* by Peter Watts, page 35-37
+*Blindsight* is an amazingly Less Wrong book, with much discussion of epistemology and cognitive failures, starting with the title of the book. It is some of the hardest science fiction in existence, with a 22-page "Notes and References" section walking through 144 citations for the underlying science.
+Pushing a related quote to a comment...
+Pushing discussion to another comment...</a></h3>
+<span class="tagline">
+by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/Zubon">
+<strong>Zubon</strong></a>
+on
+Rationality Quotes Thread July 2015  |
+<span id="score_t1_cjmk">1 point</span>
+</span>
+</div></div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-posts">
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include --><h2>
+<a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/recentposts">Recent Posts</a>
+</h2>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mgi/rational_vs_reasonable/">
+Rational vs Reasonable
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/abramdemski">
+abramdemski</a> |
+6v (1c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mgh/new_lw_meetup_kyiv/">
+New LW Meetup: Kyiv
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/FrankAdamek">
+FrankAdamek</a> |
+1v (0c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mft/european_community_weekend_2015_followup/">
+European Community Weekend 2015 - Followup
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/Lachouette">
+Lachouette</a> |
+16v (7c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/me1/the_unfriendly_superintelligence_next_door/">
+The Unfriendly Superintelligence next door
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/jacob_cannell">
+jacob_cannell</a> |
+40v (63c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mf7/harpers_fishing_nets_a_review_of_platos_camera_by/">
+Harper’s Fishing Nets: a review of Plato’s Camera by Paul Churchland
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/eli_sennesh">
+eli_sennesh</a> |
+11v (8c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mf0/monthly_bragging_thread_july_2015/">
+Monthly Bragging Thread July 2015 </a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/elharo">
+elharo</a> |
+5v (8c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mez/rationality_quotes_thread_july_2015/">
+Rationality Quotes Thread July 2015 </a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/elharo">
+elharo</a> |
+4v (27c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mbm/beyond_statistics_101/">
+Beyond Statistics 101
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/JonahSinick">
+JonahSinick</a> |
+17v (124c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/md2/the_brain_as_a_universal_learning_machine/">
+The Brain as a Universal Learning Machine
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/jacob_cannell">
+jacob_cannell</a> |
+74v (156c)
+</span>
+</div>
+</div>
+<div class="reddit-link">
+<div>
+<h3>
+<a class="reddit-link-title" href="https://web.archive.org/web/20150711171926/http://lesswrong.com/lw/mcz/intrinsic_motivation_is_crucial_for_overcoming/">
+Intrinsic motivation is crucial for overcoming akrasia
+</a>
+</h3>
+<span>by <a href="https://web.archive.org/web/20150711171926/http://lesswrong.com/user/JonahSinick">
+JonahSinick</a> |
+12v (43c)
+</span>
+</div>
+</div></div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="recent-wiki-edits">
+<h2><a href="https://web.archive.org/web/20150626005037/http://wiki.lesswrong.com/wiki/Special:RecentChanges">Recent Wiki Edits</a></h2>
+<ul id="http://wiki.lesswrong.com/mediawiki/index.php?title=Special:RecentChanges&amp;feed=rss&amp;hideminor=1&amp;namespace=0"></ul>
+</div>
+</div>
+<div class="spacer">
+<div class="sidebox">
+<h2 id="http://www.overcomingbias.com/feed_title"></h2>
+<ul id="http://www.overcomingbias.com/feed"></ul>
+</div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="side-monthly-contributors">
+<link href="./2_files/banner-styles.css" rel="stylesheet" type="text/css"/>
+<link href="./2_files/iconochive.css" rel="stylesheet" type="text/css"/>
+<!-- End Wayback Rewrite JS Include --><h2>Top Contributors, 30 Days</h2>
+<div class="contributors">
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/jacob_cannell">jacob_cannell</a>
+(<b>1379</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/JonahSinick">JonahSinick</a>
+(<b>643</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/abramdemski">abramdemski</a>
+(<b>342</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Lumifer">Lumifer</a>
+(<b>335</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/ChristianKl">ChristianKl</a>
+(<b>287</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/DeVliegendeHollander">DeVliegendeHollander</a>
+(<b>245</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/James_Miller">James_Miller</a>
+(<b>209</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Lachouette">Lachouette</a>
+(<b>185</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/eli_sennesh">eli_sennesh</a>
+(<b>177</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Viliam">Viliam</a>
+(<b>146</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Gunnar_Zarncke">Gunnar_Zarncke</a>
+(<b>145</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/tanagrabeast">tanagrabeast</a>
+(<b>134</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Vaniver">Vaniver</a>
+(<b>120</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/Kaj_Sotala">Kaj_Sotala</a>
+(<b>117</b>)
+</div>
+<div class="user">
+<a href="https://web.archive.org/web/20150711171848/http://lesswrong.com/user/gjm">gjm</a>
+(<b>110</b>)
+</div>
+</div></div>
+</div>
+<div class="spacer">
+<div class="sidebox" id="karma-awards">
+<h2>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/karma">Recent Karma Awards</a>
+</h2>
+</div>
+</div>
+</div>
+</div><!-- #main -->
+<div class="footer clear">
+<div class="reddit">
+Powered by <strong>Reddit</strong>
+<a href="https://web.archive.org/web/20150626005037/http://code.reddit.com/" title="Powered by Reddit"><img alt="Powered by Reddit" src="./2_files/reddit_logo.png"/></a>
+</div>
+<ul class="footer-links">
+<li>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/about">About Less Wrong</a>
+</li>
+<li><a href="https://web.archive.org/web/20150626005037/http://wiki.github.com/tricycle/lesswrong/issues-bugs-and-requested-features">Report Issues</a></li>
+<li class="privacy-policy"><a href="https://web.archive.org/web/20150626005037/http://intelligence.org/files/PrivacyandTerms-Lesswrong.com.pdf" target="_blank">Privacy &amp; Terms <span>(NEW 23/04/15)</span></a></li>
+</ul>
+</div>
+<div class="cover" id="cover" onclick="hidecover('cover', 'loginpopup')" style="display:none">
+</div>
+<div class="popup" id="loginpopup" style="display: none">
+<h1 id="cover_msg">You'll need to login or register to do that</h1>
+<h2 id="cover_disclaim">(Don't worry, it only takes a few seconds)</h2>
+<div class="loginform divide">
+<h3>Create</h3>
+<p class="tagline">
+Pick a username and password for your Less Wrong and Less Wrong Wiki accounts. You will receive an email to verify your account.
+</p>
+<form action="https://web.archive.org/web/20150626005037/http://lesswrong.com/post/reg" id="login_reg" method="post" onsubmit="return chklogin(this);" target="_top">
+<input name="reason" type="hidden" value=""/>
+<input name="op" type="hidden" value="reg"/>
+<div>
+<ul>
+<li>
+<label for="user_reg">Username:</label>
+<input id="user_reg" maxlength="20" name="user_reg" type="text" value=""/>
+<span class="error" id="BAD_USERNAME_reg">
+</span>
+<span class="error" id="BAD_USERNAME_CHARS_reg">
+</span>
+<span class="error" id="BAD_USERNAME_SHORT_reg">
+</span>
+<span class="error" id="BAD_USERNAME_LONG_reg">
+</span>
+<span class="error" id="USERNAME_TAKEN_reg">
+</span>
+</li>
+<li>
+<label for="email_reg">Email:</label>
+<input id="email_reg" maxlength="50" name="email_reg" type="text" value=""/>
+<span class="error" id="NO_EMAIL_reg">
+</span>
+<span class="error" id="BAD_EMAIL_reg">
+</span>
+</li>
+<li>
+<label for="passwd_reg">Password:</label>
+<input id="passwd_reg" maxlength="20" name="passwd_reg" type="password"/>
+<span class="error" id="BAD_PASSWORD_reg">
+</span>
+</li>
+<li>
+<label for="passwd2_reg">Verify password:</label>
+<input id="passwd2_reg" maxlength="20" name="passwd2_reg" type="password"/>
+<span class="error" id="BAD_PASSWORD_MATCH_reg">
+</span>
+</li>
+<li>
+<table>
+<tbody><tr>
+<td></td>
+<td>
+<img alt="i wonder if these things even work" class="capimage" id="capimage" src="./2_files/kill.png"/>
+</td>
+</tr>
+<tr>
+<td align="right">
+</td>
+<td>
+<input id="capiden" name="iden" type="hidden" value=""/>
+<input class="cap-text" id="captcha" name="captcha" onfocus="clearTitle(this)" size="30" style="color: gray;" type="text"/>
+</td>
+<td>
+<span class="error" id="BAD_CAPTCHA">
+</span>
+</td>
+</tr>
+</tbody></table>
+<span class="error" id="DRACONIAN_reg">
+</span>
+<span class="error" id="RATELIMIT_reg">
+</span>
+</li>
+<li>
+<input id="rem_reg" name="rem" type="checkbox"/>
+<label class="remember" for="rem_reg">Remember me</label>
+</li>
+</ul>
+<p>
+<button type="submit">
+Create account
+</button>
+<span class="error" id="status_reg"></span>
+</p>
+</div>
+</form>
+</div>
+<div class="loginform">
+<h3>Login</h3>
+<p class="tagline">
+Already have an account and just want to login?
+</p>
+<form action="https://web.archive.org/web/20150626005037/http://lesswrong.com/post/login" id="login_login" method="post" onsubmit="return chklogin(this);" target="_top">
+<input name="reason" type="hidden" value=""/>
+<input name="op" type="hidden" value="login"/>
+<div>
+<ul>
+<li>
+<label for="user_login">Username:</label>
+<input id="user_login" maxlength="20" name="user_login" type="text" value=""/>
+</li>
+<li>
+<label for="passwd_login">Password:</label>
+<input id="passwd_login" maxlength="20" name="passwd_login" type="password"/>
+<span class="error" id="WRONG_PASSWORD_login">
+</span>
+</li>
+<li>
+<input id="rem_login" name="rem" type="checkbox"/>
+<label class="remember" for="rem_login">Remember me</label>
+</li>
+</ul>
+<p>
+<button type="submit">
+Login
+</button>
+<span class="error" id="status_login"></span>
+</p>
+</div>
+</form>
+<p>
+<a href="https://web.archive.org/web/20150626005037/http://lesswrong.com/password">Forgot your password?</a>
+</p>
+</div>
+<div class="clear"></div>
+<div style="text-align:center">
+<a href="javascript:hidecover('cover','loginpopup')">
+Close this window
+</a>
+</div>
+</div>
+<div class="cover" id="langcover" onclick="hidecover('langcover', 'langpopup')" style="display:none">
+</div>
+<div class="popup" id="langpopup" style="display: none">
+<div style="text-align:center">
+<a href="javascript:hidecover('langcover','langpopup')">
+Close this window
+</a>
+</div>
+</div>
+</div><!-- #wrapper -->
+</body><div></div></html>

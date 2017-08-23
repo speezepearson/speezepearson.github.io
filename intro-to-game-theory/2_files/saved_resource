@@ -1,0 +1,19 @@
+if (window['google'] != undefined && window['google']['loader'] != undefined) {
+if (!window['google']['feeds']) {
+window['google']['feeds'] = {};
+google.feeds.Version = '1.0';
+google.feeds.JSHash = '482f2817cdf8982edf2e5669f9e3a627';
+google.feeds.LoadArgs = 'file\75feeds\46v\0751';
+}
+google.loader.writeLoadTag("css", google.loader.ServiceBase + "/api/feeds/1.0/482f2817cdf8982edf2e5669f9e3a627/default+ja.css", false);
+google.loader.writeLoadTag("script", google.loader.ServiceBase + "/api/feeds/1.0/482f2817cdf8982edf2e5669f9e3a627/default+ja.I.js", false);
+}
+
+/*
+     FILE ARCHIVED ON 11:07:14 Jun 26, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:56:32 Aug 23, 2017.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
