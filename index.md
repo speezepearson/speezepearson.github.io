@@ -32,6 +32,7 @@ Things I've Done
 - I got BSes in physics and CS from UC Santa Barbara, and then a MS in CS from the University of Washington's Allen School, working with [Michael Ernst][mernst] on [fault localization][fl-paper].
 
 <!-- (secret marker) -->
+<!-- dummy -->
 
 [hpmor]: http://hpmor.com/chapter/1
 [mernst]: https://homes.cs.washington.edu/~mernst/
