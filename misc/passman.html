@@ -13,15 +13,23 @@
       outline: 1px solid red;
     }
 
+    input[type=text], input[type=password] {
+      max-width: 10em;
+    }
+
     table {
       border-collapse: collapse;
     }
     th,td {
       border: 1px solid black;
+      vertical-align: text-top;
     }
 
-    #whole-file-operations {
-      margin-bottom: 2em;
+    #bulk-operations {
+      padding: 1em;
+      border-right: 1px solid black;
+      margin-right: 1em;
+      max-width: 20em;
     }
 
     .column-container {
@@ -33,6 +41,16 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    ul.spacey > li {
+      margin-bottom: 1.5em;
+    }
+
+    #status {
+      overflow: auto;
+      width: 100%;
+      height: 4em;
     }
   </style>
 <script type="text/javascript">/******/ (function(modules) { // webpackBootstrap
@@ -97,7 +115,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -123,80 +141,27 @@ exports.default = globals;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function flash(e, color) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
-
-  var oldColor = e.style['outline'];
-  e.style['outline'] = '5px solid ' + color;
-  setTimeout(function () {
-    if (oldColor === undefined) delete e.style['outline'];else e.style['outline'] = oldColor;
-  }, duration);
-}
-
-exports.flash = flash;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function query(q, obj) {
-  var regexp = new RegExp('^' + q.replace(/ /g, '.+'));
-  return Object.keys(obj).sort().filter(function (s) {
-    return regexp.test(s);
-  });
-}
-
-exports.default = query;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _globals = __webpack_require__(0);
 
 var _globals2 = _interopRequireDefault(_globals);
 
-var _download = __webpack_require__(4);
+var _download = __webpack_require__(2);
 
-var _flash = __webpack_require__(1);
+var _secret_store = __webpack_require__(3);
 
-var _element_content_importer = __webpack_require__(5);
+var _flash = __webpack_require__(4);
 
-var _element_content_importer2 = _interopRequireDefault(_element_content_importer);
-
-var _secrets_view = __webpack_require__(6);
-
-var _secrets_view2 = _interopRequireDefault(_secrets_view);
-
-var _copy_to_clipboard = __webpack_require__(7);
+var _copy_to_clipboard = __webpack_require__(5);
 
 var _copy_to_clipboard2 = _interopRequireDefault(_copy_to_clipboard);
 
-var _goodness = __webpack_require__(8);
-
-var _encrypted_message = __webpack_require__(9);
+var _encrypted_message = __webpack_require__(6);
 
 var _encrypted_message2 = _interopRequireDefault(_encrypted_message);
 
-var _query = __webpack_require__(2);
-
-var _query2 = _interopRequireDefault(_query);
+var _query = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -206,186 +171,116 @@ globals.document = document;
 
 window.addEventListener('load', _download.takeSnapshot);
 
-function obliterate(x) {
-  if (Array.isArray(x)) {
-    while (x.length > 0) {
-      obliterate(x[x.length - 1]);
-      x.pop();
-    }
-  } else if ((typeof x === 'undefined' ? 'undefined' : _typeof(x)) === 'object') {
-    Object.entries(x).forEach(function (_ref) {
-      var _ref2 = _slicedToArray(_ref, 2),
-          k = _ref2[0],
-          v = _ref2[1];
+var decryptedJ = null;
 
-      obliterate(v);
-      delete x[k];
-    });
-  }
-}
-
-function only(xs) {
-  if (xs.length !== 1) {
-    throw 'expected 1 thing, got ' + xs.length + ': ' + JSON.stringify(xs);
-  }
-  return xs[0];
-}
-
-var view;
-window.addEventListener('load', function () {
-  view = new _secrets_view2.default(document.getElementById('view-holder'), function () {
-    return j;
-  }, function () {
-    return document.getElementById('account').value;
-  }, function () {
-    return document.getElementById('field').value;
-  });
-});
+var flasher;
 
 function updateView() {
-  view.refresh();
-  Object.entries({ 'unlocked-only': isDecrypted(), 'locked-only': !isDecrypted() }).forEach(function (_ref3) {
-    var _ref4 = _slicedToArray(_ref3, 2),
-        className = _ref4[0],
-        enabled = _ref4[1];
+  var _map = ['account', 'field'].map(function (f) {
+    return (0, _query.parseQuery)(document.getElementById('copy-field--' + f).value);
+  }),
+      _map2 = _slicedToArray(_map, 2),
+      accountRE = _map2[0],
+      fieldRE = _map2[1];
 
-    Array.from(document.getElementsByClassName(className)).forEach(function (e) {
-      e.disabled = !enabled;
-    });
-  });
-}
-
-var j = null;
-function isDecrypted() {
-  return j !== null;
-}
-function isQueryPrecise() {
-  if (!isDecrypted()) return false;
-  var accountQuery = document.getElementById('account').value;
-  var accountMatches = (0, _query2.default)(accountQuery, j);
-  if (accountMatches.length !== 1) {
-    return false;
-  }
-  var fieldQuery = document.getElementById('field').value;
-  var fieldMatches = (0, _query2.default)(fieldQuery, j[accountMatches[0]]);
-  return fieldMatches.length === 1;
+  document.getElementById('view-holder').innerHTML = '';
+  document.getElementById('view-holder').appendChild(j.filter(accountRE, fieldRE).buildView());
 }
 
-// I'd like to only store a fingerprint,
-//  but all the crypto stuff is asynchronous,
-//  which means we couldn't check the fingerprint when the page is closed.
-// I think this is the lesser of two evils,
-//  since we're storing j in plaintext anyway.
-var normalizedDecryptedJ = null;
-function normalizeJ(j) {
-  window.areThereUnsavedChanges = areThereUnsavedChanges;
-  return Object.entries(j).sort().map(function (_ref5) {
-    var _ref6 = _slicedToArray(_ref5, 2),
-        k = _ref6[0],
-        v = _ref6[1];
+var j = new _secret_store.SecretStore({});
 
-    return [k, Object.entries(v).sort()];
-  });
+var lastSavedJFingerprint = null;
+function thereAreUnsavedChanges() {
+  return j.nAccounts() > 0 && lastSavedJFingerprint !== j.fingerprint();
 }
-function areThereUnsavedChanges() {
-  return JSON.stringify(normalizeJ(j)) !== JSON.stringify(normalizedDecryptedJ);
+function foldInAndTally(j, j2) {
+  var oldNFields = j.allFields().length;
+  var nOverwrittenFields = j2.allFields().filter(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 3),
+        a = _ref2[0],
+        f = _ref2[1],
+        v = _ref2[2];
+
+    return j.get(a, f) !== undefined && v !== j.get(a, f);
+  }).length;
+  j.foldIn(j2);
+  var newNFields = j.allFields().length;
+  var nAddedFields = newNFields - oldNFields;
+  var nAgreedUponFields = j2.allFields().length - nAddedFields - nOverwrittenFields;
+  return {
+    overwritten: nOverwrittenFields,
+    agreedUpon: nAgreedUponFields,
+    added: nAddedFields
+  };
 }
-function unlock() {
-  var em, plaintext;
+
+function decrypt() {
+  var em, plaintext, decryptedJ, tally;
   return Promise.resolve().then(function () {
     em = _encrypted_message2.default.deserialize(document.getElementById('encrypted-message').innerText);
     return Promise.resolve().then(function () {
-      return em.decrypt(document.getElementById('password').value);
+      return flasher.awaitOrFlashRed(em.decrypt(document.getElementById('decryption-password').value), "Tried to decrypt the ciphertext in this HTML file, but password was incorrect.");
     }).then(function (_resp) {
       plaintext = _resp;
     }).catch(function (err) {
-      (0, _goodness.makeBad)(document.getElementById('password'));
-      document.getElementById('password').focus();
-      return;
+      document.getElementById('decryption-password').focus();
+      throw err;
     });
   }).then(function () {
-    j = JSON.parse(plaintext);
-    normalizedDecryptedJ = normalizeJ(j);
+    decryptedJ = flasher.doOrFlashRed(function () {
+      return _secret_store.SecretStore.parse(plaintext);
+    }, "Tried to decrypt the ciphertext in this HTML file, but the JSON was malformed. (This is REALLY WEIRD.)");
+
+    lastSavedJFingerprint = decryptedJ.fingerprint();
+    tally = foldInAndTally(j, decryptedJ);
+
     updateView();
-    document.getElementById('account').focus();
-    (0, _flash.flash)(document.getElementById('unlock-button'), 'lightgreen');
+    document.getElementById('copy-field--account').focus();
+    flasher.flash('lightgreen', '\n    Decrypted the ciphertext embedded in this HTML file, and merged it into working memory.\n    (' + tally.added + ' fields added, ' + tally.overwritten + ' modified, ' + tally.agreedUpon + ' agreed-upon)\n  ');
   });
 }
 function copyPlaintext() {
-  (0, _copy_to_clipboard2.default)(JSON.stringify(j, null, 2));
-  (0, _flash.flash)(document.getElementById('copy-plaintext-button'), 'lightgreen');
+  (0, _copy_to_clipboard2.default)(JSON.stringify(j.toJSONFriendlyObject(), null, 2));
+  flasher.flash('lightgreen', '\n    Copied entire working memory to clipboard, as JSON.\n  ');
 }
-function download(filename, text) {
-  // adapted from: https://stackoverflow.com/a/18197511/8877656
-  var pom = document.createElement('a');
-  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  pom.setAttribute('download', filename);
-
-  if (document.createEvent) {
-    var event = document.createEvent('MouseEvents');
-    event.initEvent('click', true, true);
-    pom.dispatchEvent(event);
-  } else {
-    pom.click();
-  }
-}
-function copyCiphertext() {
-  (0, _copy_to_clipboard2.default)(JSON.stringify(_encrypted_message2.default.deserialize(document.getElementById('encrypted-message').innerText).toJSONFriendlyObject()));
-}
-function downloadNewPassman() {
+function save() {
+  var password, shouldContinue, oldPassword, oldJ, em;
   return Promise.resolve().then(function () {
-    (0, _download.downloadThisPageWithNewEncryptedMessage)(_encrypted_message2.default.deserialize(document.getElementById('encrypted-message').innerText));
-  });
-}
-function lock() {
-  var password, shouldContinue, oldJ, em, changed;
-  return Promise.resolve().then(function () {
-    password = document.getElementById('password').value;
+    password = document.getElementById('encryption-password').value;
     shouldContinue = true;
+    oldPassword = document.getElementById('decryption-password').value;
     return Promise.resolve().then(function () {
       return _encrypted_message2.default.deserialize(document.getElementById('encrypted-message').innerText).decrypt(password);
     }).then(function (_resp) {
       oldJ = JSON.parse(_resp);
     }).catch(function (err) {
       if (err.name !== 'OperationError') {
+        flasher.flash('pink', '\n        Something REAL WEIRD happened while checking whether the password you entered matched the one for this file.\n        This should never happen.\n      ');
         throw err;
       }
-      shouldContinue = confirm("You are about to lock the document with a different password than you started with! Make sure that's what you want.");
+      shouldContinue = confirm("You are about to download a passman file with a different password than the original one! Is that what you want?");
     });
   }).then(function () {
-    if (!!shouldContinue) {
-      return Promise.resolve().then(function () {
-        return _encrypted_message2.default.create(document.getElementById('password').value, JSON.stringify(j));
-      }).then(function (_resp) {
-        em = _resp;
+    if (!shouldContinue) {
+      flasher.flash('pink', 'Would have saved, but you aborted.');
+    } else {
 
-        document.getElementById('encrypted-message').innerText = em.serialize();
+      if (password.length < 6) {
+        shouldContinue = confirm('You password is only ' + password.length + ' characters long. I won\'t stop you, but please, MAKE REAL SURE THIS IS INTENTIONAL before saving.');
+      }
+      if (!shouldContinue) {
+        flasher.flash('pink', 'Would have saved, but you aborted.');
+      } else {
+        return Promise.resolve().then(function () {
+          return _encrypted_message2.default.create(password, j.stringify());
+        }).then(function (_resp) {
+          em = _resp;
 
-        changed = areThereUnsavedChanges();
-
-        // Probably a dumb threat model, but:
-        // modify objects in-place as much as possible so they're not just
-        // floating around easily inspectable until the GC runs.
-
-        obliterate(normalizedDecryptedJ);normalizedDecryptedJ = null;
-        obliterate(j);j = null;
-
-        Array.from(document.getElementsByTagName('input')).filter(function (e) {
-          return e.type === 'password';
-        }).forEach(function (e) {
-          e.value = '';
+          (0, _download.downloadThisPageWithNewEncryptedMessage)(em);
+          lastSavedJFingerprint = j.fingerprint();
+          flasher.flash('lightgreen', '\n    Downloaded a clone of this HTML file, except the ciphertext encodes this page\'s current working memory.\n  ');
         });
-        (0, _goodness.makeBad)(document.getElementById('password'));
-        document.getElementById('password').focus();
-        updateView();
-
-        if (changed) {
-          if (confirm('You changed something; would you like to download your new passwords as a new file?')) {
-            downloadNewPassman();
-          }
-        }
-        (0, _flash.flash)(document.getElementById('lock-button'), 'lightgreen');
-      });
+      }
     }
   }).then(function () {});
 }
@@ -398,35 +293,49 @@ function onEnter(element, callback) {
   });
 }
 
-var importedEncryptedMessage;
-function onImportCiphertextFileSelect() {
-  var file, ciphertext;
-  return Promise.resolve().then(function () {
-    file = document.getElementById('import-ciphertext-file').files[0];
-
-    if (!(file === undefined)) {
-      return Promise.resolve().then(function () {
-        return extractElementTextFromFile(file, 'encrypted-message');
-      }).then(function (_resp) {
-        ciphertext = _resp;
-
-        importedEncryptedMessage = _encrypted_message2.default.deserialize(ciphertext);
-      });
-    }
-  }).then(function () {});
+function importPlaintext() {
+  var importedJ = flasher.doOrFlashRed(function () {
+    return _secret_store.SecretStore.parse(document.getElementById('import-plaintext-field').value);
+  }, "Tried to merge the 'Import JSON' field into working memory, but the JSON was malformed.");
+  var tally = foldInAndTally(j, importedJ);
+  document.getElementById('import-plaintext-field').value = '';
+  updateView();
+  flasher.flash('lightgreen', '\n    Merged the JSON from the \'Import JSON\' field into working memory.\n    (' + tally.added + ' fields added, ' + tally.overwritten + ' modified, ' + tally.agreedUpon + ' agreed-upon)\n  ');
 }
-function importCiphertext() {
-  document.getElementById('encrypted-message').innerText = importedEncryptedMessage.serialize();
+
+function setField() {
+  var _map3 = ['account', 'field', 'value'].map(function (f) {
+    return document.getElementById('set-field--' + f).value;
+  }),
+      _map4 = _slicedToArray(_map3, 3),
+      account = _map4[0],
+      field = _map4[1],
+      value = _map4[2];
+
+  var fieldExists = j.get(account, field) !== undefined;
+  var deleting = value === '';
+  if (deleting && !fieldExists) {
+    flasher.flash('pink', '\n      Tried to delete ' + account + '.' + field + ', but that field didn\'t exist anyway.\n    ');
+    return;
+  }
+
+  j.set(account, field, value);
+  updateView();
+  flasher.flash('lightgreen', '\n    ' + (deleting ? 'Deleted' : 'Set') + ' ' + account + '.' + field + '.\n  ');
+  document.getElementById('set-field--value').value = '';
 }
 
 window.addEventListener('load', function () {
-  Object.entries({ 'unlock-button': unlock,
-    'lock-button': lock,
+  flasher = new _flash.Flasher(document.getElementById('status'));
+
+  Object.entries({ 'decrypt-button': decrypt,
+    'save-button': save,
     'copy-plaintext-button': copyPlaintext,
-    'copy-ciphertext-button': copyCiphertext }).forEach(function (_ref7) {
-    var _ref8 = _slicedToArray(_ref7, 2),
-        id = _ref8[0],
-        clickCallback = _ref8[1];
+    'import-plaintext-button': importPlaintext,
+    'set-field-button': setField }).forEach(function (_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+        id = _ref4[0],
+        clickCallback = _ref4[1];
 
     document.getElementById(id).addEventListener('click', clickCallback);
   });
@@ -438,49 +347,43 @@ window.addEventListener('load', function () {
   });
   window.addEventListener('click', function (e) {
     if (e.target.classList.contains('copy-button')) {
-      (0, _copy_to_clipboard2.default)(j[e.target.getAttribute('data-account')][e.target.getAttribute('data-field')]);
-      (0, _flash.flash)(e.target, 'lightgreen');
+      var account = e.target.getAttribute('data-account');
+      var field = e.target.getAttribute('data-field');
+      (0, _copy_to_clipboard2.default)(j.toJSONFriendlyObject()[account][field]);
+      flasher.flash('lightgreen', '\n        Copied ' + field + ' for ' + account + ' to clipboard.\n      ');
     }
   });
 
-  document.getElementById('password').focus();
-  onEnter(document.getElementById('password'), function () {
-    document.getElementById(isDecrypted() ? 'lock-button' : 'unlock-button').click();
+  document.getElementById('decryption-password').focus();
+  flasher.flash('pink', 'Enter decryption password in top-left to decrypt the passwords in this file.');
+  onEnter(document.getElementById('decryption-password'), function () {
+    document.getElementById('decrypt-button').click();
   });
-  onEnter(document.getElementById('set-value'), function () {
-    var account = document.getElementById('account').value;
-    var field = document.getElementById('field').value;
-    var value = document.getElementById('set-value').value;
-    if (j[account] === undefined) j[account] = {};
-    if (value === '') {
-      delete j[account][field];
-      if (Object.keys(j[account]).length === 0) {
-        delete j[account];
-      }
-    } else {
-      j[account][field] = document.getElementById('set-value').value;
-    }
-    updateView();
-    (0, _flash.flash)(document.getElementById('set-value'), 'lightgreen');
+  onEnter(document.getElementById('set-field--value'), function () {
+    document.getElementById('set-field-button').click();
   });
 
   window.onbeforeunload = function () {
-    if (areThereUnsavedChanges()) {
+    if (thereAreUnsavedChanges()) {
       return "There are unsaved changes. Consider saving them.";
     }
   };
 
-  window.ciphertextImporter = new _element_content_importer2.default(document.getElementById('encrypted-message'), document.getElementById('import-ciphertext-file'), _encrypted_message2.default.deserialize);
-  [document.getElementById('field'), document.getElementById('account')].forEach(function (el) {
+  ['account', 'field'].forEach(function (f) {
+    var el = document.getElementById('copy-field--' + f);
     onEnter(el, function () {
       document.getElementsByClassName('copy-button')[0].click();el.focus();
     });
   });
   updateView();
+
+  if (window.crypto.subtle === undefined) {
+    alert("THIS WON'T WORK FOR YOU. Your browser isn't presenting the SubtleCrypto API that all major modern browsers do. (Note: Chrome, and possibly others, don't provide SubtleCrypto to JS loaded over http:// connections, only https://. This might be happening to you.)");
+  }
 });
 
 /***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -530,7 +433,7 @@ exports.takeSnapshot = takeSnapshot;
 exports.downloadThisPageWithNewEncryptedMessage = downloadThisPageWithNewEncryptedMessage;
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -539,81 +442,13 @@ exports.downloadThisPageWithNewEncryptedMessage = downloadThisPageWithNewEncrypt
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.SecretStore = exports.validate = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _flash = __webpack_require__(1);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ElementContentImporter = function () {
-  function ElementContentImporter(target, fileInput) {
-    var validate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
-
-    _classCallCheck(this, ElementContentImporter);
-
-    this.target = target;
-    this.fileInput = fileInput;
-    this.validate = validate;
-
-    var $this = this;
-    this.fileInput.addEventListener('input', function (e) {
-      $this.importFromFile(e.target.files[0]).then(function () {
-        (0, _flash.flash)(e.target, 'green');
-      }, function (err) {
-        alert('import failed: ' + err);(0, _flash.flash)(e.target, 'red');
-      });
-    });
-  }
-
-  _createClass(ElementContentImporter, [{
-    key: 'importFromFile',
-    value: function importFromFile(file) {
-      var $this = this;
-      return new Promise(function (resolve, reject) {
-        if (file === undefined) return;
-        var reader = new FileReader();
-        reader.onload = function (loadEvent) {
-          try {
-            var html = loadEvent.target.result;
-            var doc = new DOMParser().parseFromString(html, 'text/html');
-            var text = doc.getElementById($this.target.id).innerText;
-            $this.validate(text);
-            $this.target.innerText = text;
-            resolve();
-          } catch (err) {
-            $this.fileInput.value = [];
-            reject(err);
-          }
-        };
-        reader.readAsText(file);
-      });
-    }
-  }]);
-
-  return ElementContentImporter;
-}();
-
-exports.default = ElementContentImporter;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _query = __webpack_require__(2);
-
-var _query2 = _interopRequireDefault(_query);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _globals = __webpack_require__(0);
 
@@ -631,45 +466,154 @@ function appendNewChild(parent, tagName) {
   return result;
 }
 
-function filterJ(j, q1, q2) {
-  if (j === null) return [];
-  var result = {};
-  (0, _query2.default)(q1, j).forEach(function (k) {
-    result[k] = {};
-    (0, _query2.default)(q2, j[k]).forEach(function (k2) {
-      result[k][k2] = j[k][k2];
+function validate(data) {
+  if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') throw 'not an object';
+  Object.entries(data).forEach(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        k = _ref2[0],
+        sub = _ref2[1];
+
+    if ((typeof sub === 'undefined' ? 'undefined' : _typeof(sub)) !== 'object') throw 'key ' + JSON.stringify(k) + ' maps to non-object';
+    Object.entries(sub).forEach(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+          field = _ref4[0],
+          value = _ref4[1];
+
+      if (typeof value !== 'string') throw 'field ' + JSON.stringify(k) + '.' + JSON.stringify(field) + ' has type ' + (typeof value === 'undefined' ? 'undefined' : _typeof(value)) + ', not string';
     });
   });
-  return result;
 }
 
-var SecretsView = function () {
-  function SecretsView(element, getData, getAccountQ, getFieldQ) {
-    _classCallCheck(this, SecretsView);
+var SecretStore = function () {
+  function SecretStore(data) {
+    _classCallCheck(this, SecretStore);
 
-    this.element = element;
-    this.getData = getData;
-    this.getAccountQ = getAccountQ;
-    this.getFieldQ = getFieldQ;
+    validate(data);
+    this.data = data;
   }
 
-  _createClass(SecretsView, [{
-    key: 'refresh',
-    value: function refresh() {
-      this.element.innerHTML = '';
-      var j = filterJ(this.getData(), this.getAccountQ(), this.getFieldQ());
-      if (j === null || Object.keys(j).length === 0) return;
+  _createClass(SecretStore, [{
+    key: 'toJSONFriendlyObject',
+    value: function toJSONFriendlyObject() {
+      return this.data;
+    }
+  }, {
+    key: 'nAccounts',
+    value: function nAccounts() {
+      return Object.values(this.data).length;
+    }
+  }, {
+    key: 'nFields',
+    value: function nFields() {
+      return [].concat.apply([], Object.values(this.data).map(function (v) {
+        return Object.keys(v);
+      })).length;
+    }
+  }, {
+    key: 'fingerprint',
+    value: function fingerprint() {
+      return JSON.stringify(Object.entries(this.data).sort().map(function (_ref5) {
+        var _ref6 = _slicedToArray(_ref5, 2),
+            k = _ref6[0],
+            v = _ref6[1];
 
-      var table = appendNewChild(globals.document.getElementById('view-holder'), 'table');
-      var headerRow = appendNewChild(table, 'tr');
-      appendNewChild(headerRow, 'th').innerText = 'Account';
-      appendNewChild(headerRow, 'th').innerText = 'Copy';
-      Object.entries(j).forEach(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            account = _ref2[0],
-            info = _ref2[1];
+        return [k, Object.entries(v).sort()];
+      }));
+    }
+  }, {
+    key: 'stringify',
+    value: function stringify() {
+      return JSON.stringify(this.toJSONFriendlyObject());
+    }
+  }, {
+    key: 'allFields',
+    value: function allFields() {
+      var result = [];
+      Object.entries(this.data).sort().forEach(function (_ref7) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            account = _ref8[0],
+            info = _ref8[1];
 
-        var tr = appendNewChild(table, 'tr');
+        Object.entries(info).sort().forEach(function (_ref9) {
+          var _ref10 = _slicedToArray(_ref9, 2),
+              field = _ref10[0],
+              value = _ref10[1];
+
+          result.push([account, field, value]);
+        });
+      });
+      return result;
+    }
+  }, {
+    key: 'filter',
+    value: function filter(accountRE, fieldRE) {
+      var result = new SecretStore({});
+      this.allFields().filter(function (_ref11) {
+        var _ref12 = _slicedToArray(_ref11, 3),
+            a = _ref12[0],
+            f = _ref12[1],
+            v = _ref12[2];
+
+        return accountRE.test(a) && fieldRE.test(f);
+      }).forEach(function (_ref13) {
+        var _ref14 = _slicedToArray(_ref13, 3),
+            a = _ref14[0],
+            f = _ref14[1],
+            v = _ref14[2];
+
+        return result.set(a, f, v);
+      });
+      return result;
+    }
+  }, {
+    key: 'foldIn',
+    value: function foldIn(other) {
+      var _this = this;
+
+      other.allFields().forEach(function (_ref15) {
+        var _ref16 = _slicedToArray(_ref15, 3),
+            a = _ref16[0],
+            f = _ref16[1],
+            v = _ref16[2];
+
+        return _this.set(a, f, v);
+      });
+    }
+  }, {
+    key: 'get',
+    value: function get(account, field) {
+      if (this.data[account] === undefined) return undefined;
+      return this.data[account][field];
+    }
+  }, {
+    key: 'set',
+    value: function set(account, field, value) {
+      if (value === '') {
+        if (this.data[account] === undefined) return;
+        delete this.data[account][field];
+        if (Object.keys(this.data[account]).length === 0) {
+          delete this.data[account];
+        }
+      } else {
+        if (this.data[account] === undefined) this.data[account] = {};
+        this.data[account][field] = value;
+      }
+    }
+  }, {
+    key: 'buildView',
+    value: function buildView() {
+      var result = appendNewChild(globals.document.getElementById('view-holder'), 'table');
+
+      var headerRow = appendNewChild(result, 'tr');
+      appendNewChild(headerRow, 'th').innerText = this.nAccounts() + ' accounts match';
+      appendNewChild(headerRow, 'th').innerText = this.nFields() + ' fields match';
+
+      Object.entries(this.data).forEach(function (_ref17) {
+        var _ref18 = _slicedToArray(_ref17, 2),
+            account = _ref18[0],
+            info = _ref18[1];
+
+        var tr = appendNewChild(result, 'tr');
         appendNewChild(tr, 'td').innerText = account;
         var dataCell = appendNewChild(tr, 'td');
         Object.keys(info).sort().forEach(function (field) {
@@ -681,16 +625,100 @@ var SecretsView = function () {
           appendNewChild(dataCell, 'br');
         });
       });
+      return result;
+    }
+  }], [{
+    key: 'fromJSONFriendlyObject',
+    value: function fromJSONFriendlyObject(data) {
+      return new SecretStore(data);
+    }
+  }, {
+    key: 'parse',
+    value: function parse(s) {
+      return new SecretStore(JSON.parse(s));
     }
   }]);
 
-  return SecretsView;
+  return SecretStore;
 }();
 
-exports.default = SecretsView;
+exports.validate = validate;
+exports.SecretStore = SecretStore;
 
 /***/ }),
-/* 7 */
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Flasher = function () {
+  function Flasher(statusElement) {
+    _classCallCheck(this, Flasher);
+
+    this.statusElement = statusElement;
+  }
+
+  _createClass(Flasher, [{
+    key: 'flash',
+    value: function flash(color, message) {
+      var _this = this;
+
+      var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
+
+      this.statusElement.style['background-color'] = color;
+      setTimeout(function () {
+        _this.statusElement.style['background-color'] = '';
+      }, duration);
+      this.statusElement.innerText = message.trim();
+    }
+  }, {
+    key: 'doOrFlashRed',
+    value: function doOrFlashRed(f, message) {
+      var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
+
+      try {
+        return f();
+      } catch (err) {
+        this.flash('pink', message + ('\n(error: ' + err + ')'), duration);
+        throw err;
+      }
+    }
+  }, {
+    key: 'awaitOrFlashRed',
+    value: function awaitOrFlashRed(p, message, catchFollowup) {
+      var duration,
+          _this2 = this,
+          _arguments = arguments;
+
+      duration = _arguments.length > 3 && _arguments[3] !== undefined ? _arguments[3] : 500;
+
+      try {
+        return p;
+      } catch (err) {
+        if (catchFollowup !== undefined) {
+          catchFollowup();
+        }_this2.flash('pink', message + ('\n(error: ' + err + ')'), duration);
+        throw err;
+      }
+    }
+  }]);
+
+  return Flasher;
+}();
+
+exports.Flasher = Flasher;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -768,42 +796,7 @@ function copyToClipboard(text) {
 exports.default = copyToClipboard;
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function makeGood(e) {
-  e.classList.add('good');
-  e.classList.remove('bad');
-}
-function makeBad(e) {
-  e.classList.add('bad');
-  e.classList.remove('good');
-}
-function doAndSetGoodness(e, f) {
-  var result;
-  try {
-    result = f();
-    makeGood(e);
-  } catch (err) {
-    makeBad(e);
-    e.focus();
-    throw err;
-  }
-  return result;
-}
-
-exports.makeBad = makeBad;
-exports.makeGood = makeGood;
-exports.doAndSetGoodness = doAndSetGoodness;
-
-/***/ }),
-/* 9 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -977,49 +970,92 @@ var EncryptedMessage = function () {
 
 exports.default = EncryptedMessage;
 
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function escapeRegExp(str) {
+  // source: https://stackoverflow.com/a/6969486
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function parseQuery(q) {
+  var pattern = q.split(' ').map(escapeRegExp).join('.+');
+  return new RegExp('^' + pattern, 'i');
+}
+
+exports.parseQuery = parseQuery;
+
 /***/ })
 /******/ ]);</script></head>
 <body>
 
-<div id="whole-file-operations" class="row-container">
-  <input type="password" id="password" placeholder="decryption password" />
+<div id="status"></div>
 
-  <table>
-    <tr>
-      <td><button id="unlock-button" class="locked-only">Unlock</button></td>
-      <td><button id="copy-ciphertext-button" class="locked-only">Copy Ciphertext</button></td>
-      <td><input class="locked-only" type="file" id="import-ciphertext-file" /> to import ciphertext from other Passman file</td>
-    </tr>
-    <tr>
-      <td><button id="lock-button" class="unlocked-only">Lock</button></td>
-      <td><button id="copy-plaintext-button" class="unlocked-only">Copy Plaintext</button></td>
-    </tr>
-  </table>
-</div>
+<table>
+  <tr>
+    <td style="padding: 1em; border: 5px solid black; height: 1px; width: 40%">
+      <p><strong>Load/Save</strong></p>
+      <ul class="">
+        <li>
+          <input type="password" id="decryption-password" placeholder="decryption password" />
+          <button id="decrypt-button">Decrypt To Working Memory</button>
+        </li>
+        <li>
+          <input type="password" id="encryption-password" placeholder="encryption password" />
+          <button id="save-button">Encrypt &amp; Save Working Memory</button>
+        </li>
+  </ul>
+    </td>
 
-  <div>
-    Take
-    <input type="text" class="query-field" id="account" placeholder="account" />
-    .
-    <input type="text" class="query-field" id="field" placeholder="field" value="password" />
-    and...
+    <td rowspan="2" style="padding: 1em; border: 5px solid black; height: 100%; width: 60%">
+      <strong>Query Working Memory</strong>
+      <ul class="spacey">
+        <li>
+          <button id="copy-plaintext-button" class="unlocked-only">Copy Working Memory To Clipboard As JSON</button>
+        </li>
+        <li class="">
+          Filter working memory: <br />
+          <input type="text" class="query-field" id="copy-field--account" placeholder="account" /><input type="text" class="query-field" id="copy-field--field" placeholder="field" />
 
-    <ul>
-      <li>
-        ...copy it (by hitting Enter in one of those text fields, or clicking a button below).<br />
-        (Those text fields are regexps, except Space is replaced with "one or more characters.")
-      </li>
-      <li>
-        ...change it, by typing the new value here and hitting Enter:
-        <input type="password" id="set-value" placeholder="new value" />
-        (leave empty to delete).<br />
-        (In this case, the above fields are <i>not</i> regexps, they are exact.)
-      </li>
-    </ul>
-  </div>
+          <ul>
+            <li>(queries must match beginnings of account/field names)</li>
+            <li>(Space means "1 or more characters", so e.g. "a z" would match "amazon")</li>
+            <li>(hit Enter to copy first match)</li>
+          </ul>
 
-  Query matches:
-  <div id="view-holder"></div>
+          <div id="view-holder"></div>
+
+        </li>
+      </ul>
+    </td>
+
+  </tr>
+  <tr>
+    <td style="padding: 1em; border: 5px solid black">
+      <strong>Modify Working Memory</strong>
+      <ul class="spacey">
+        <li class="">
+          <button id="set-field-button">Set</button>
+          <input type="text" class="query-field" id="set-field--account" placeholder="account" /><input type="text" class="query-field" id="set-field--field" placeholder="field" />
+          to
+          <input type="password" id="set-field--value" placeholder="new value" />
+          (leave empty to delete)
+        </li>
+        <li class="">
+          <button id="import-plaintext-button">Import JSON</button> by pasting it here:
+          <input id="import-plaintext-field" type="password" />
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 <br />
 <hr />
@@ -1029,9 +1065,58 @@ exports.default = EncryptedMessage;
   <summary><strong>Help</strong></summary>
 
   <details style="margin: 0.5em; border-left: 1px solid black; padding-left: 0.5em">
+    <summary>Tutorial</summary>
+
+    <p>This password manager is a standalone HTML file that contains some encrypted data, as well as tools for querying it, manipulating it, and saving the manipulated data.</p>
+
+    <p>This approach is a little wonky in places for technical reasons, but on the plus side:</p>
+    <ul>
+      <li>
+        It's super-portable; assuming you have a modern browser, this will work out of the box, without installing anything or using any tools you're unfamiliar with. (Contrast with: GPG.)
+      </li>
+      <li>
+        It's super-simple. Your passwords are stored as a simple JSON object, serialized and encrypted with a standard, widely-supported stream cipher (specifically, AES-256 in GCM mode, the key computed by PBKDF2-ing the SHA-256 of your master password). You can trivially export all your data as JSON; and if this page "just stops working" somehow, you can easily recover your data using a text editor and a Python script (see "I can't recover my passwords!" below). (Contrast with: everything that's not GPG.)
+      </li>
+    </ul>
+
+    <p><strong>Model</strong></p>
+
+    <p>You have many accounts, and many secrets for each account. This password manager stores this as a two-level JSON object, like</p>
+    <pre>
+      {
+        "amazon": {
+          "email": "potato.king@gmail.com",
+          "password": "pw-for-amazon",
+          "username": "potato.king@gmail.com"
+        },
+        "facebook": {
+          "email": "yet.another.alias@gmail.com",
+          "password": "pw-for-facebook",
+          "username": "yet.another.alias@gmail.com"
+        },
+        "github": {
+          "password": "pw-for-github",
+          "username": "leethacker"
+        },
+        ...
+      }
+    </pre>
+
+    <p>It's <i>a little bad</i> if bad guys get ahold of the account/field names; it's <strong>disastrous</strong> if they get ahold of the values (e.g. "pw-for-amazon"). This password manager is designed to protect the account/field names <i>somewhat</i> (they're stored encrypted on disk, but still displayed on the screen), and the field values ("secrets") <strong>energetically</strong> (they are encrypted on disk, <i>never</i> displayed on the screen, and they only <i>ever</i> leave the JavaScript interpreter's memory in plaintext by being copied to the clipboard when you ask for them to be).</p>
+
+    <p>(The following model with "working memory" might be unintuitive. Sorry! The reasons are: JavaScript can't overwrite files, only download new ones; and browsers love caching, so we need to make sure none of your secrets ever touch anything the browser might save in a cache somewhere.)</p>
+
+    <p>At any given time, this page has one of these two-level objects stored in "working memory." This is the object that you query and modify. It starts out empty; you can modify that object in various ways, or embed it (encrypted) in a copy of this file which is downloaded.</p>
+    <p>There is also such an object embedded in <i>this</i> file. You can decrypt that encrypted object and merge it into working memory by typing the decryption password into the top-left password field, then hitting "Decrypt". (Go on, try it! The default password is "master".)</p>
+    <p>I imagine that most of your interactions with this page will be to copy passwords. In the right-hand pane, under "Filter working memory", you can type the first couple characters of an account's/field's name to filter working memory, then hit Enter (or click the button for a field) to copy the field to your clipboard. (Try it! With the default data, type "a" and "p" into the Account and Field inputs, then hit Enter -- "pw-for-amazon" will be copied to your clipboard.)</p>
+    <p>The left-hand pane provides tools for modifying working memory: you can update a single field, or paste a JSON object into the "Import JSON" text field and then click the button to import it. You can then save the page with the "Save" button in the top-left, or you'll be asked to save your data if you try to close the page while there are unsaved changes.</p>
+    <p>To wipe working memory (~= "log out" of a traditional password manager), just close/reload the page. This will obliterate the JavaScript interpreter state, which is the only place any secrets are ever stored.</p>
+  </details>
+
+  <details style="margin: 0.5em; border-left: 1px solid black; padding-left: 0.5em">
     <summary>I can't recover my passwords!</summary>
     <p>
-      You can use
+      If this web page isn't working for you, you can use
       <a href="https://github.com/speezepearson/passman/blob/master/recover.py">this Python script</a>
       to recover them: in a terminal, run <code>pip install cryptodomex &amp;&amp; python recover.py html &lt; &lt;this file&gt;</code>.
     </p>
@@ -1039,21 +1124,15 @@ exports.default = EncryptedMessage;
       If Cryptodome stopped being maintained or something: sorry, you'll have to roll up your sleeves and:
     </p>
     <ul>
-      <li>UTF-8 encode your master password</li>
-      <li>run that through SHA-256</li>
-      <li>run that hash through PBKDF2 (with the parameters given by the encrypted payload's <code>keyDerivationAlgorithm</code>)</li>
-      <li>use that key to decrypt the encrypted payload's <code>ciphertext</code> using the encrypted payload's <code>encryptionAlgorithm</code> (by default, AES-256 in Galois/Counter Mode).</li>
+      <li>pull the encrypted message out of this file (it's a JSON object inside the div with id="encrypted-message")</li>
+      <li>run your master password (UTF8-encoded) through SHA-256</li>
+      <li>run that hash through PBKDF2 (with the parameters given by the encrypted message's <code>keyDerivationAlgorithm</code>)</li>
+      <li>use that key to decrypt the encrypted message's <code>ciphertext</code> using the encrypted message's <code>encryptionAlgorithm</code> (by default, AES-256 in Galois/Counter Mode).</li>
     </ul>
+
+    (JavaScript combines the GCM authentication-tag with the ciphertext, and you may need to slice them apart if your crypto library expects them separately. The last 16 bytes of the encrypted message's "ciphertext" field are the tag, and the rest are the key.)
   </details>
 
-  <details style="margin: 0.5em; border-left: 1px solid black; padding-left: 0.5em">
-    <summary>Why does [UI feature] suck?</summary>
-    Maybe one of:
-    <ol>
-      <li>I try hard to make sure none of your secrets end up anywhere the browser might cache them -- notably, the JavaScript console, and anywhere in the DOM. This is rather constraining.</li>
-      <li>"Copy to clipboard" is only permitted as a direct result of a user action; no asynchronous copies are allowed. Unfortunately, the whole WebCrypto interface is asynchronous, so anything like "encrypt-and-copy" is impossible.</li>
-    </ol>
-  </details>
 </details>
 
 
