@@ -16,6 +16,10 @@
     input[type=text], input[type=password] {
       max-width: 10em;
     }
+    #generate-field--charsets {
+      max-width: none;
+      width: 100%;
+    }
 
     table {
       border-collapse: collapse;
@@ -23,6 +27,10 @@
     th,td {
       border: 1px solid black;
       vertical-align: text-top;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     #bulk-operations {
@@ -375,8 +383,11 @@ function generateField() {
   }
   value = (0, _rand.shuffle)(Array.from(value)).join('');
   j.set(account, field, value);
+  (0, _copy_to_clipboard2.default)(value);
+  elem('copy-field--account').value = account;
+  elem('copy-field--field').value = '';
   updateView();
-  flasher.flash('lightgreen', 'Set ' + account + '.' + field + '.');
+  flasher.flash('lightgreen', 'Generated a ' + value.length + '-character-long random value for ' + account + '.' + field + ', and copied it to the clipboard.');
 }
 
 function failCatastrophically(reason) {
@@ -484,6 +495,15 @@ window.addEventListener('load', function () {
     });
   });
   updateView();
+
+  // Hack to make the page load faster; the window's "load" event doesn't fire before the images load, which can take a while.
+  Array.from(document.getElementsByTagName('img')).forEach(function (img) {
+    console.log('considering', img);
+    if (img.src === '') {
+      console.log('fixing', img);
+      img.src = img.getAttribute('data-src');
+    }
+  });
 });
 
 window.addEventListener('keypress', function (e) {
@@ -1230,7 +1250,7 @@ exports.shuffle = shuffle;
           (leave empty to delete)
         </li>
         <li>
-          <button id="generate-field-button">Generate Random Value</button> for<br />
+          <button id="generate-field-button">Generate And Copy Random Value</button> for<br />
           <input type="text" id="generate-field--account" placeholder="account" /><input type="text" class="query-field" id="generate-field--field" placeholder="field" /><br />
           of length <input type="number" id="generate-field--length" placeholder="length" value="15" /><br />
           including at least one character from each of these charsets:<br />
@@ -1289,40 +1309,40 @@ exports.shuffle = shuffle;
   <ol style="list-style-type: decimal">
   <li><p>Open the file in my browser.</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/1.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/1.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div></li>
   <li><p>Type in my decryption key, and hit Enter.</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/2.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/2.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div></li>
   <li><p>Go about my life.</p></li>
   <li><p>I need to log into Facebook. I type in queries to specify my &quot;password&quot; for &quot;facebook&quot;, and hit Enter.</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/3.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/3.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div></li>
   <li><p>I successfully log into Facebook. Heartened by my success, I decide to add my Expedia account to my password manager: I go the the &quot;Modify Working Memory&quot; pane, specify that I want to set &quot;expedia&quot;'s &quot;username&quot; to something, and hit Enter:</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/4.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/4.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div>
   <p>I do the same for my Expedia password.</p></li>
   <li><p>Eventually, I close the page-- oops--</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/5.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/5.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div>
   <p>That's right! I haven't saved my Expedia password. I hit &quot;Stay on Page&quot;.</p></li>
   <li><p>I type in my password to encrypt the file-- oops--</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/6.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/6.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div>
   <p>I must've typoed my password. I type it again:</p>
   <div class="figure">
-  <img src="https://github.com/speezepearson/passman/raw/master/readme-images/7.png" alt="screenshot" />
+  <img data-src="https://github.com/speezepearson/passman/raw/master/readme-images/7.png" alt="screenshot" />
   <p class="caption">screenshot</p>
   </div></li>
   <li><p>Before I forget -- I hate this step, but I don't yet know a way around it -- I move the <em>newly downloaded</em> password file to replace the old one, so that when I open it next time, I'll be sure to open the version that contains my Expedia password.</p></li>
