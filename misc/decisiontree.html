@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <script>
+      var decisionTree = {
+        text: "Do you want to eat plants or something else?",
+        choices: {
+          "Plants": {
+            text:  "Do you want a fruit or a vegetable?",
+            choices: {
+              "fruit": [
+                {p: 0.5, leaf: true, text: "banana"},
+                {p: 0.5, leaf: true, text: "apple"},
+              ],
+              "vegetable": [
+                {p: 0.25, leaf: true, text: "lettuce"},
+                {p: 0.25, leaf: true, text: "tomato"},
+                {p: 0.25, leaf: true, text: "celery"},
+                {p: 0.25, leaf: true, text: "potato"},
+              ]
+            }
+          },
+          "Something else": [
+            {p: 0.333, text: "nonde", choices: {x: {leaf: true, text: "x"}, y: {leaf: true, text: "y"}}},
+            {p: 0.333, text: "termin", choices: {x: {leaf: true, text: "x"}, y: {leaf: true, text: "y"}}},
+            {p: 0.333, text: "istic", choices: {x: {leaf: true, text: "x"}, y: {leaf: true, text: "y"}}}
+          ]
+        }
+      };
+
+      function createElement(tagName, text) {
+        var result = document.createElement(tagName);
+        result.innerText = text;
+        return result;
+      }
+
+      function decide(domElement, tree) {
+        if (Array.isArray(tree)) {
+          var totalP = tree.map(t => t.p).reduce((x, y) => x+y);
+          var x = Math.random() * totalP;
+          for (var i=0; i<tree.length; i++) {
+            x -= tree[i].p;
+            if (x < 0) {
+              return decide(domElement, tree[i]);
+            }
+          }
+          alert("Apparently I can't do math");
+          return;
+        }
+
+        domElement.appendChild(createElement('span', tree.text));
+
+        if (tree.leaf) {
+          return;
+        }
+
+        domElement.appendChild(createElement('br', ''));
+        Object.keys(tree.choices).forEach(choiceText => {
+          var button = createElement('button', choiceText);
+          button.addEventListener('click', () => decide(domElement, tree.choices[choiceText]));
+          domElement.appendChild(button);
+        })
+        domElement.appendChild(createElement('br', ''))
+      }
+
+      window.addEventListener('load', () => decide(document.getElementsByTagName('body')[0], decisionTree));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
