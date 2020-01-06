@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Betmaker</title>
+    <script>
+      function getId(id) { return document.getElementById(id); }
+      function render() {
+        var pessP = parseFloat(getId("pessimist-percent").value) / 100;
+        var pessPValid = isFinite(pessP) && 0 < pessP && pessP < 1;
+        getId("pessimist-percent").style["border"] = pessPValid ? '' : '1px solid red';
+
+        var optP = parseFloat(getId("optimist-percent").value) / 100;
+        var optPValid = isFinite(optP) && 0 < optP && optP < 1;
+        getId("optimist-percent").style["border"] = optPValid ? '' : '1px solid red';
+
+        var maxExposure = parseFloat(getId("max-exposure").value);
+        var maxExposureValid = isFinite(maxExposure) && 0 < maxExposure;
+        getId("max-exposure").style["border"] = maxExposureValid ? '' : '1px solid red';
+
+        if (!(pessPValid && optPValid && maxExposureValid)) return;
+
+        console.log({pessP, optP, maxExposure});
+      
+        var betP = (pessP + optP) / 2;
+        var payoutYNRatio = (1-betP) / betP;
+        var optPaysPessIfNo = maxExposure * Math.min(1, 1/payoutYNRatio);
+        var pessPaysOptIfYes = optPaysPessIfNo * payoutYNRatio;
+
+        getId("bet-percent").innerText = (betP * 100).toFixed(2);
+        getId("opt-pays-pess-if-no").innerText = optPaysPessIfNo.toFixed(2);
+        getId("pess-pays-opt-if-yes").innerText = pessPaysOptIfYes.toFixed(2);
+        getId("evPess").innerText = `${(pessP*(-pessPaysOptIfYes) + (1-pessP)*optPaysPessIfNo).toFixed(2)} = ${pessP.toFixed(3)}*(-${pessPaysOptIfYes.toFixed(2)}) + ${(1-pessP).toFixed(3)}*${optPaysPessIfNo.toFixed(2)}`;
+        getId("evOpt").innerText = `${(optP*pessPaysOptIfYes + (1-optP)*(-optPaysPessIfNo)).toFixed(2)} = ${optP.toFixed(3)}*${pessPaysOptIfYes.toFixed(2)} + ${(1-optP).toFixed(3)}*(-${optPaysPessIfNo.toFixed(2)})`;
+      }
+      window.addEventListener("load", () => {
+        console.log(document.getElementsByTagName("input"));
+        Array.from(document.getElementsByTagName("input")).forEach(e => {
+          e.addEventListener("input", render);
+          e.addEventListener("change", render);
+        });
+        render();
+      });
+    </script>
+  </head>
+  <body>
+    Pessimist probability: <input id="pessimist-percent" type="number")></input>% <br/>
+    Optimist probability: <input id="optimist-percent" type="number")></input>% <br/>
+    Maximum exposure: $<input id="max-exposure" value="10" type="number"></input> <br/>
+    <br/>
+    <strong>If yes:</strong> pessimist pays optimist <span id="pess-pays-opt-if-yes"></span><br/>
+    <strong>If no:</strong> optimist pays pessimist <span id="opt-pays-pess-if-no"></span><br/>
+    (implied bet probability is <span id="bet-percent"></span>%) <br/>
+    <br/>
+    Expected winnings: <br/>
+    &nbsp;&nbsp;  <strong>Pessimist:</strong> <span id="evPess"></span><br/>
+    &nbsp;&nbsp;  <strong>Optimist:</strong> <span id="evOpt"></span><br/>
+    <br/>
+    
+  </body>
+</html>
